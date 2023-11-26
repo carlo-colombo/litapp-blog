@@ -1,0 +1,24 @@
+created: 20221122170231261
+creator: carlo
+modified: 20221124210150798
+modifier: carlo
+tags:
+title: $:/plugins/litapp/blog/templates/tags
+type: text/vnd.tiddlywiki
+
+\define sub() [tagging[]has:field[published]count[]]
+
+<div>
+
+!!! Tags
+
+<ul>
+<$list filter="[has:field[published]tags[]!regexp[pf:]!sortsub:integer<sub>]" >
+    <$set name=c filter="[all[current]tagging[]has:field[published]count[]]">
+    <li>
+      <$link /> (<<c>>)
+    </li>
+    </$set>
+</$list>
+</ul>
+</div>

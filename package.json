@@ -1,0 +1,27 @@
+{
+  "devDependencies": {
+    "@nubosoftware/node-static": "^0.7.11",
+    "chokidar": "^3.5.3",
+    "esbuild": "^0.19.5",
+    "execa": "^8.0.1",
+    "prettier": "^3.0.3",
+    "tiddlywiki": "^5.3.1"
+  },
+  "dependencies": {},
+  "scripts": {
+    "tw": "npx tiddlywiki",
+    "clean": "rm -rf editions/demo/output/*",
+    "build-blog": "yarn clean && tiddlywiki editions/demo --commands '[enlist:raw{$:/plugins/litapp/blog/build}]'",
+    "build":"TIDDLYWIKI_PLUGIN_PATH=./plugins tiddlywiki editions/demo/ --build index",
+    "dev": "node scripts/dev.js",
+    "prettier": "prettier plugins src scripts --write",
+    "set-plugin-version": "node scripts/setPluginVersion.js"
+  },
+  "type": "module",
+  "name": "litapp-blog",
+  "version": "0.1.0",
+  "description": "Litapp Blog integration for Tiddlywiki",
+  "repository": "https://github.com/carlo-colombo/litapp-blog",
+  "author": "Carlo Colombo <carlo.colombo@gmx.com>",
+  "license": "MIT"
+}

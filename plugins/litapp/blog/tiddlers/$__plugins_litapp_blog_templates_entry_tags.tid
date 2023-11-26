@@ -1,0 +1,11 @@
+created: 20231126224427983
+modified: 20231126224552880
+tags: 
+title: $:/plugins/litapp/blog/templates/entry/tags
+type: text/vnd.tiddlywiki
+
+<ul class="tags">
+    <$list filter="[enlist{!!tags}]">
+        <li><$link /></li>
+    </$list>
+</ul>

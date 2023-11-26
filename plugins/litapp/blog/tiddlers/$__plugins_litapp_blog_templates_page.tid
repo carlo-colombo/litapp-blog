@@ -1,0 +1,55 @@
+created: 20221121072346188
+creator: carlo
+modified: 20231126111022793
+modifier: carlo
+tags:
+title: $:/plugins/litapp/blog/templates/page
+type: text/vnd.tiddlywiki
+
+\define tv-wikilink-template() $uri_doubleencoded$.html
+\define tv-config-toolbar-icons() no
+\define tv-config-toolbar-text() no
+\define tv-config-toolbar-class() tc-btn-invisible
+\import [[$:/core/ui/PageMacros]] [all[shadows+tiddlers]tag[$:/tags/Macro]!has[draft.of]]
+`<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="`{{$:/core/templates/version}}`" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link href="`<<datauri "$:/plugins/litapp/blog/favicon">>`" rel="icon" type="image/x-icon" /id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="/static.css">
+<link rel="alternate" type="application/rss+xml"
+  title="RSS Feed for Litblog"
+  href="rss.xml" />
+<title>Litblog - `<$view field="caption"><$view field="title"/></$view>`</title>
+</head>
+<body>
+    <header>
+       <h1>
+         <a href="/" style="text-decoration:none; color: inherit">Litblog</a>
+       </h1>
+    </header>
+    <main>
+        <article>
+            <section>
+            `<$view tiddler=<<contentTemplate>>format="htmlwikified"/>`
+            </section>
+        </article>
+    </main>
+    <section class="sidebar">
+        <aside class="side">
+          `<$view tiddler="$:/plugins/litapp/blog/templates/tags" format="htmlwikified"/>`
+        </aside>
+    </section>
+    <footer>
+      © Carlo Colombo `<<now "YYYY">>` - Generated UTC `<<now "[UTC]YYYY-0MM-0DD 0hh:0mm" >>`
+    </footer>
+</body>
+</html>
+`

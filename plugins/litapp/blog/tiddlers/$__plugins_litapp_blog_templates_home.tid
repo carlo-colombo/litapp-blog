@@ -1,0 +1,39 @@
+created: 20231126231339785
+modified: 20231126231953914
+tags:
+title: $:/plugins/litapp/blog/templates/home
+type: text/vnd.tiddlywiki
+
+<div class="home-container">
+<$list filter=[has:field[published]!sort[published]] >
+<div class={{{ [is[current]has:field[pixelfed]then[picture]else[post]] }}}>
+
+<hr/>
+
+
+<$list filter="[is[current]!has:field[pixelfed]]" >
+<$link /> - <$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
+<$transclude $tiddler="$:/plugins/litapp/blog/templates/entry/tags" />
+<$list filter="[is[current]tagging[]]">
+  <$transclude />
+</$list>
+<$link>[...]</$link>
+</$list>
+
+<!-- photos -->
+<$list filter="[is[current]has:field[pixelfed]]" >
+<$link>
+<$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
+</$link>
+<$link>
+  <img src={{!!image}} />
+</$link>
+
+{{!!description}}
+
+</$list>
+<!-- photos -->
+
+</div>
+</$list>
+</div>

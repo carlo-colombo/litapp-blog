@@ -1,0 +1,20 @@
+created: 20221122073702808
+creator: carlo
+modified: 20231125213959391
+modifier: carlo
+tags:
+title: $:/plugins/litapp/blog/templates/entry
+type: text/vnd.tiddlywiki
+
+<div>
+
+<h2> {{!!title}} </h2>
+<em>
+    <$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
+</em>
+
+<$transclude $tiddler="$:/plugins/litapp/blog/templates/entry/tags" />
+
+<$transclude  />
+
+</div>

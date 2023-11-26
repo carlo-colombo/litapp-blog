@@ -1,0 +1,23 @@
+created: 20221122183000312
+creator: carlo
+modified: 20221128125323929
+modifier: carlo
+tags:
+title: $:/plugins/litapp/blog/templates/tag
+type: text/vnd.tiddlywiki
+
+<<list-links "[all[current]tagging[]has:field[published]]">>
+
+<$list filter="[all[current]tagging[]has:field[published]]" >
+
+---
+
+<$link /> - <$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
+
+<$transclude $tiddler="$:/plugins/litapp/blog/templates/entry/tags" />
+
+<$list filter="[is[current]tagging[]]">
+  <$transclude />
+</$list>
+<$link>[...]</$link>
+</$list>
