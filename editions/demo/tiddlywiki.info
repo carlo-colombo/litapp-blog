@@ -1,8 +1,6 @@
 {
     "description": "Empty edition",
     "plugins": [
-        "tiddlywiki/tiddlyweb",
-        "tiddlywiki/filesystem",
         "tiddlywiki/highlight",
         "litapp/blog"
     ],
