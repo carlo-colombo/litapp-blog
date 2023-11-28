@@ -1,6 +1,5 @@
 {
   "devDependencies": {
-    "@nubosoftware/node-static": "^0.7.11",
     "chokidar": "^3.5.3",
     "esbuild": "^0.19.5",
     "execa": "^8.0.1",
