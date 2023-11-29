@@ -7,14 +7,10 @@ title: $:/plugins/litapp/blog/templates/entry
 type: text/vnd.tiddlywiki
 
 <div>
-
 <h2> {{!!title}} </h2>
 <em>
     <$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
 </em>
-
 <$transclude $tiddler="$:/plugins/litapp/blog/templates/entry/tags" />
-
 <$transclude  />
-
 </div>

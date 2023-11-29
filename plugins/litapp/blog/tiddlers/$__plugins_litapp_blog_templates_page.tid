@@ -38,7 +38,7 @@ type: text/vnd.tiddlywiki
     <main>
         <article>
             <section>
-            `<$view tiddler=<<contentTemplate>>format="htmlwikified"/>`
+                `<$view tiddler=<<contentTemplate>>format="htmlwikified"/>`
             </section>
         </article>
     </main>
