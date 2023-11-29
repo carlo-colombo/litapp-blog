@@ -9,7 +9,7 @@
   "dependencies": {},
   "scripts": {
     "tw": "npx tiddlywiki",
-    "clean": "rm -rf editions/demo/output/*",
+    "clean": "rm -rf editions/demo/output/static/*",
     "build-blog": "yarn clean && tiddlywiki editions/demo --commands '[enlist:raw{$:/plugins/litapp/blog/build}]'",
     "build": "TIDDLYWIKI_PLUGIN_PATH=./plugins tiddlywiki editions/demo/ --build index",
     "dev": "node scripts/dev.js",
