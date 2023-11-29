@@ -50,8 +50,13 @@ h1,h2,h3 {
         width: 100%;
     }
     & .picture {
-        width: calc(33.33% - 8px);
         padding: 0 2px;
         margin: 0 2px;
+    }
+}
+
+@media (min-width:768px) {
+    .home-container .picture {
+        width: calc(33.33% - 8px);
     }
 }
