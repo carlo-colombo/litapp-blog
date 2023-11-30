@@ -58,11 +58,6 @@ h1,h2,h3 {
             margin: 2em 0;
         }
     }
-    > *:first-child {
-        & hr {
-            margin-top: 0em;
-        }
-    }
 }
 
 header {
