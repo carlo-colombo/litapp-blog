@@ -14,25 +14,26 @@ type: text/vnd.tiddlywiki
 `<!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="generator" content="TiddlyWiki" />
-<meta name="tiddlywiki-version" content="`{{$:/core/templates/version}}`" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="mobile-web-app-capable" content="yes"/>
-<meta name="format-detection" content="telephone=no">
-<link href="`<<datauri "$:/plugins/litapp/blog/favicon">>`" rel="icon" type="image/x-icon" /id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<link rel="stylesheet" href="/static.css">
-<link rel="alternate" type="application/rss+xml"
-  title="RSS Feed for Litblog"
-  href="rss.xml" />
-<title>Litblog - `<$view field="caption"><$view field="title"/></$view>`</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="generator" content="TiddlyWiki" />
+    <meta name="tiddlywiki-version" content="`{{$:/core/templates/version}}`" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no">
+    <link
+      href="`<<datauri "$:/plugins/litapp/blog/favicon">>`"
+      rel="icon" type="image/x-icon" id="faviconLink"
+      rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="/static.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Litblog" href="rss.xml" />
+    <title>`{{$:/config/blog/title}} - <$view field="caption"><$view field="title"/></$view>`</title>
 </head>
 <body>
     <header>
        <h1>
-         <a href="/" style="text-decoration:none; color: inherit">Litblog</a>
+         <a href="/">`{{$:/config/blog/title}}`</a>
        </h1>
     </header>
     <main>
