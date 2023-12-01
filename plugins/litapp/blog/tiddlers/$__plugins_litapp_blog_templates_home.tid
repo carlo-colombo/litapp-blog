@@ -26,7 +26,7 @@ caption: Home
 <$link>
     <$set name=imgurl filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]" >
         <img src=<<imgurl>> />
-    </set>
+    </$set>
 </$link>
 
 {{!!description}}
