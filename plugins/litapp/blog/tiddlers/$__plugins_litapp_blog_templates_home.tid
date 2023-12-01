@@ -3,6 +3,7 @@ modified: 20231126231953914
 tags:
 title: $:/plugins/litapp/blog/templates/home
 type: text/vnd.tiddlywiki
+caption: Home
 
 <div class="home-container">
 <$list filter=[has:field[published]!sort[published]] >
