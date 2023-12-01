@@ -24,7 +24,9 @@ caption: Home
 <$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
 </$link>
 <$link>
-  <img src={{!!image}} />
+    <$set name=imgurl filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]" >
+        <img src=<<imgurl>> />
+    </set>
 </$link>
 
 {{!!description}}
