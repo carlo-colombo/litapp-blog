@@ -6,7 +6,7 @@ tags:
 title: $:/plugins/litapp/blog/templates/page
 type: text/vnd.tiddlywiki
 
-\define tv-wikilink-template() $uri_doubleencoded$.html
+\define tv-wikilink-template() $uri_encoded$.html
 \define tv-config-toolbar-icons() no
 \define tv-config-toolbar-text() no
 \define tv-config-toolbar-class() tc-btn-invisible

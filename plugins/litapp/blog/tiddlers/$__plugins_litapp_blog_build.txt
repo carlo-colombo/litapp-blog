@@ -1,7 +1,7 @@
 --verbose
 --render
 [has:field[published]]
-[encodeuricomponent[]addprefix[static/]addsuffix[.html]]
+[addprefix[static/]addsuffix[.html]]
 text/plain
 $:/plugins/litapp/blog/templates/page
 contentTemplate
@@ -12,7 +12,7 @@ static/static.css
 plain/text
 --render
 [has:field[published]tags[]!regexp[pf:]]
-[encodeuricomponent[]addprefix[static/]addsuffix[.html]]
+[addprefix[static/]addsuffix[.html]]
 text/plain
 $:/plugins/litapp/blog/templates/page
 contentTemplate
