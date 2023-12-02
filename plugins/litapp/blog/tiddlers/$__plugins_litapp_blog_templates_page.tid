@@ -30,7 +30,7 @@ type: text/vnd.tiddlywiki
     <link rel="alternate" type="application/rss+xml" title="RSS Feed for Litblog" href="rss.xml" />
     <title>`{{$:/config/blog/title}} - <$view field="caption"><$view field="title"/></$view>`</title>
 </head>
-<body>
+<body hx-boost="true">
     <header>
        <h1>
          <a href="/">`{{$:/config/blog/title}}`</a>
@@ -53,6 +53,7 @@ type: text/vnd.tiddlywiki
       - Generated  UTC `<<now "[UTC]YYYY-0MM-0DD 0hh:0mm" >>`
       - `{{$:/plugins/litapp/blog!!version}}`
     </footer>
+ <script src="https://unpkg.com/htmx.org@1.9.9"></script>
 </body>
 </html>
 `
