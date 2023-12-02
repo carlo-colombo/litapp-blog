@@ -20,16 +20,21 @@ caption: Home
 
 <!-- photos -->
 <$list filter="[is[current]has:field[pixelfed]]" >
-<$link>
-<$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
-</$link>
-<$link>
-    <$set name=imgurl filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]" >
-        <img src=<<imgurl>> />
-    </$set>
-</$link>
-
-{{!!description}}
+<h3>
+    <$link overrideClass="">
+        <$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
+    </$link>
+</h3>
+<div class="photo">
+    <$link>
+        <$set name=imgurl filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]" >
+            <img src=<<imgurl>> />
+        </$set>
+    </$link>
+</div>
+<div>
+    {{!!description}}
+</div>
 
 </$list>
 <!-- photos -->

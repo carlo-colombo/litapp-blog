@@ -52,6 +52,14 @@ h1,h2,h3 {
     & .picture {
         padding: 0 2px;
         margin: 0 2px;
+        width: 100%;
+
+        & .photo a {
+            display: block;
+            > img {
+                width: 100%;
+            }
+        }
     }
     & .picture, .post {
         & hr {
