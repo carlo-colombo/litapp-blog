@@ -49,7 +49,9 @@ type: text/vnd.tiddlywiki
         </aside>
     </section>
     <footer>
-      © Carlo Colombo `<<now "YYYY">>` - Generated UTC `<<now "[UTC]YYYY-0MM-0DD 0hh:0mm" >>`
+      © Carlo Colombo `<<now "YYYY">>`
+      - Generated  UTC `<<now "[UTC]YYYY-0MM-0DD 0hh:0mm" >>`
+      - `{{$:/plugins/litapp/blog!!version}}`
     </footer>
 </body>
 </html>
