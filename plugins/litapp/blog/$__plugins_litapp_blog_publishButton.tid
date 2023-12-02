@@ -1,0 +1,23 @@
+tags: $:/tags/ViewTemplate
+title: $:/plugins/litapp/blog/publishButton
+list-after: $:/core/ui/ViewTemplate/tags
+type: text/vnd.tiddlywiki
+
+<$fieldmangler>
+<$list filter="[is[current]tag[blog candidate]]" >
+  <$button>
+    <$action-setfield published=<<now "YYYY0MM0DD0hh0mm0ssXXX">> />
+    <$action-sendmessage $message="tm-remove-tag" $param="blog candidate"/>
+    <$action-sendmessage $message="tm-remove-field" $param="old_published"/>
+    Publish!
+  </$button>
+</$list>
+<$list filter="[is[current]has:field[published]]" >
+  <$button>
+    <$action-setfield old_published={{!!published}} />
+    <$action-sendmessage $message="tm-remove-field" $param="published"/>
+    <$action-sendmessage $message="tm-add-tag" $param="blog candidate"/>
+    Unpublish! ({{!!published}})
+  </$button>
+</$list>
+</$fieldmangler>
