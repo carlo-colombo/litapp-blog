@@ -23,6 +23,10 @@
     --width-content: 1080px;
 }
 
+body {
+    font-size: x-large;
+}
+
 .tags {
     padding-left: 0;
 
