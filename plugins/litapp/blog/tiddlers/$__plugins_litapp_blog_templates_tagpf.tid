@@ -1,0 +1,34 @@
+created: 20221122183000312
+creator: carlo
+modified: 20221128125323929
+modifier: carlo
+tags:
+title: $:/plugins/litapp/blog/templates/tagpf
+type: text/vnd.tiddlywiki
+
+<<list-links "[all[current]tagging[]has:field[published]]">>
+
+<div class="home-container">
+
+<$list filter="[all[current]tagging[]has:field[published]]" >
+<div class="picture">
+<h3>
+    <$link overrideClass="">
+        <$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
+    </$link>
+</h3>
+<div class="photo">
+    <$link>
+        <$set name=imgurl filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]" >
+            <img src=<<imgurl>> />
+        </$set>
+    </$link>
+</div>
+<div>
+    {{!!description}}
+</div>
+
+</div>
+</$list>
+
+</div>
