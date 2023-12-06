@@ -18,6 +18,13 @@ $:/plugins/litapp/blog/templates/page
 contentTemplate
 $:/plugins/litapp/blog/templates/tagpf
 --render
+[has:field[published]tags[]!regexp[pf:]]
+[addprefix[static/]addsuffix[.html]]
+text/plain
+$:/plugins/litapp/blog/templates/page
+contentTemplate
+$:/plugins/litapp/blog/templates/tag
+--render
 $:/plugins/litapp/blog/templates/home
 static/index.html
 text/plain
