@@ -28,6 +28,7 @@ type: text/vnd.tiddlywiki
       rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="/static.css">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed for Litblog" href="rss.xml" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     <title>`{{$:/config/blog/title}} - <$view field="caption"><$view field="title"/></$view>`</title>
 </head>
 <body hx-boost="true" data-content-template=`<<contentTemplate>>` >
