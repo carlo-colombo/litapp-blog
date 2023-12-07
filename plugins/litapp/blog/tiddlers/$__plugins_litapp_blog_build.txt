@@ -34,3 +34,8 @@ $:/plugins/litapp/blog/templates/page
 static/rss.xml
 text/plain
 $:/plugins/sq/feeds/templates/rss
+--render
+[$:/plugins/litapp/blog/sitemap]
+static/sitemap.xml
+text/plain
+$:/plugins/litapp/blog/sitemap
