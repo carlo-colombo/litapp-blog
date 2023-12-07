@@ -1,0 +1,8 @@
+tags:
+title: $:/plugins/litapp/blog/Config
+type: text/vnd.tiddlywiki
+
+
+|$:/config/feeds/SiteBaseUrl|<$edit-text tiddler="$:/config/feeds/SiteBaseUrl" tag=input />|{{$:/config/feeds/SiteBaseUrl}}|
+|$:/config/blog/SiteBaseUrl|<$edit-text tiddler="$:/config/blog/SiteBaseUrl" tag=input />|{{$:/config/blog/SiteBaseUrl}}|
+|$:/config/blog/title|<$edit-text tiddler="$:/config/blog/title" tag=input />|{{$:/config/blog/title}}|
