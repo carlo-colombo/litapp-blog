@@ -1,16 +1,16 @@
-created: 20221122183000312
-creator: carlo
-modified: 20221128125323929
-modifier: carlo
 tags:
 title: $:/plugins/litapp/blog/templates/tagpf
 type: text/vnd.tiddlywiki
 
-<<list-links "[all[current]tagging[]has:field[published]]">>
+\procedure publishedPhotos()
+[all[current]tagging[]has:field[published]!sort[published]]
+\end
+
+<$transclude $variable="list-links" filter=<<publishedPhotos>> />
 
 <div class="home-container">
 
-<$list filter="[all[current]tagging[]has:field[published]]" >
+<$list filter=<<publishedPhotos>> >
 <div class="picture">
 <h3>
     <$link overrideClass="">
