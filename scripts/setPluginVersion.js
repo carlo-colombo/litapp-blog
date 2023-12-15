@@ -1,16 +1,16 @@
-import fs from 'fs'
+import fs from "fs";
 
-const path = './plugins/litapp/blog/plugin.info'
+const path = "./plugins/litapp/blog/plugin.info";
 
-const version = JSON.parse(fs.readFileSync('./package.json')).version
-const pluginInfo = JSON.parse(fs.readFileSync(path))
+const version = JSON.parse(fs.readFileSync("./package.json")).version;
+const pluginInfo = JSON.parse(fs.readFileSync(path));
 
-console.log(version)
+console.log(version);
 
 if (!version) {
-    process.exit(1)
+  process.exit(1);
 }
 
-pluginInfo.version = version
+pluginInfo.version = version;
 
-fs.writeFileSync(path, JSON.stringify(pluginInfo, ' ', 4))
+fs.writeFileSync(path, JSON.stringify(pluginInfo, " ", 4));

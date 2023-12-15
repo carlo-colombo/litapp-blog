@@ -1,8 +1,8 @@
 import chokidar from "chokidar";
 import { execa } from "execa";
 import esbuild from "esbuild";
-import {Server} from "@nubosoftware/node-static"
-import http from 'http'
+import { Server } from "@nubosoftware/node-static";
+import http from "http";
 
 const startTW = () => {
   console.log("Starting Tiddlywiki");
@@ -16,8 +16,7 @@ const startTW = () => {
     .pipeStderr(process.stderr);
 };
 
-const twWatcher = chokidar
-    .watch("plugins", "editions")
+const twWatcher = chokidar.watch("plugins", "editions");
 
 let tw;
 
@@ -34,9 +33,11 @@ twWatcher.on("ready", () => {
   });
 });
 
-const fileServer = new Server('./editions/demo/output', { cache: false })
+const fileServer = new Server("./editions/demo/output", { cache: false });
 
-http.createServer((req, res)=>{
-    console.log(req.url)
-    fileServer.serve(req, res)
-}).listen(9021)
+http
+  .createServer((req, res) => {
+    console.log(req.url);
+    fileServer.serve(req, res);
+  })
+  .listen(9021);
