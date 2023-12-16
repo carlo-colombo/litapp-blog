@@ -19,6 +19,7 @@ const startTW = () => {
 const twWatcher = chokidar.watch("plugins", "editions");
 
 let tw;
+let eventRes;
 
 twWatcher.on("ready", () => {
   tw = startTW();
@@ -30,14 +31,39 @@ twWatcher.on("ready", () => {
     });
 
     tw = startTW();
+
+    await execa("yarn", ["build-blog"])
+      .pipeStdout(process.stdout)
+      .pipeStderr(process.stderr);
+
+    eventRes.write("event: change\n");
+    eventRes.write(`data: ${event} ${path}\n\n`);
   });
 });
 
-const fileServer = new Server("./editions/demo/output", { cache: false });
+const fileServer = new Server("./editions/demo/output/static", {
+  cache: false,
+});
 
 http
   .createServer((req, res) => {
-    console.log(req.url);
-    fileServer.serve(req, res);
+    console.log("req", req.url);
+    if (req.url == "/blog-build") {
+      const headers = {
+        "Content-Type": "text/event-stream",
+        Connection: "keep-alive",
+        "Cache-Control": "no-cache",
+      };
+      res.writeHead(200, headers);
+      eventRes = res;
+
+      return;
+    }
+
+    req
+      .addListener("end", () => {
+        fileServer.serve(req, res);
+      })
+      .resume();
   })
   .listen(9021);

@@ -6,7 +6,9 @@
     "prettier": "^3.1.1",
     "tiddlywiki": "^5.3.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@nubosoftware/node-static": "^0.7.11"
+  },
   "scripts": {
     "tw": "npx tiddlywiki",
     "clean": "rm -rf editions/demo/output/static/*",
