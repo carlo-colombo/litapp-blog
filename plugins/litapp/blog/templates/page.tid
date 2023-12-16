@@ -36,6 +36,7 @@ type: text/vnd.tiddlywiki
        <h1>
          <a href="/">`{{$:/config/blog/title}}`</a>
        </h1>
+       <h2>`<$view tiddler="$:/config/blog/subtitle" format="htmlwikified"/>`</h2>
     </header>
     <main>
         <article>
