@@ -1,8 +1,7 @@
 import chokidar from "chokidar";
 import { execa } from "execa";
 import esbuild from "esbuild";
-import { Server } from "@nubosoftware/node-static";
-import http from "http";
+import express from 'express';
 
 const startTW = () => {
   console.log("Starting Tiddlywiki");
@@ -41,14 +40,10 @@ twWatcher.on("ready", () => {
   });
 });
 
-const fileServer = new Server("./editions/demo/output/static", {
-  cache: false,
-});
+const app = express()
 
-http
-  .createServer((req, res) => {
-    console.log("req", req.url);
-    if (req.url == "/blog-build") {
+app.use(express.static("./editions/demo/output/static"))
+app.get("/blog-build", (req, res)=>{
       const headers = {
         "Content-Type": "text/event-stream",
         Connection: "keep-alive",
@@ -58,12 +53,7 @@ http
       eventRes = res;
 
       return;
-    }
-
-    req
-      .addListener("end", () => {
-        fileServer.serve(req, res);
-      })
-      .resume();
-  })
-  .listen(9021);
+})
+app.listen(9021, ()=>{
+    console.log("static blog on 9021")
+})

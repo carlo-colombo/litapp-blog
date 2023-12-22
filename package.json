@@ -3,12 +3,11 @@
     "chokidar": "^3.5.3",
     "esbuild": "^0.19.9",
     "execa": "^8.0.1",
+    "express": "^4.18.2",
     "prettier": "^3.1.1",
     "tiddlywiki": "^5.3.2"
   },
-  "dependencies": {
-    "@nubosoftware/node-static": "^0.7.11"
-  },
+  "dependencies": {},
   "scripts": {
     "tw": "npx tiddlywiki",
     "clean": "rm -rf editions/demo/output/static/*",
