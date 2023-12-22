@@ -1,5 +1,5 @@
 tags: $:/tags/ViewTemplate
-title: $:/plugins/litapp/blog/publishButton
+title: $:/plugins/litapp/blog/ui/publishButton
 list-after: $:/core/ui/ViewTemplate/tags
 type: text/vnd.tiddlywiki
 

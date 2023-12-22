@@ -1,0 +1,10 @@
+tags: $:/tags/ViewTemplate
+list-after: $:/plugins/litapp/blog/ui/publishButton
+title: $:/plugins/litapp/blog/ui/excerpt
+
+<$list filter="[is[current]tag[blog candidate]] [is[current]has:field[published]]" >
+''Excerpt'':
+<$set filter="[all[current]tagging[]]">
+<<currentTiddler>>
+</$set>
+</$list>
