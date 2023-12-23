@@ -13,7 +13,9 @@ caption: Home
 <$link /> - <$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
 <$transclude $tiddler="$:/plugins/litapp/blog/templates/entry/tags" />
 <$list filter="[is[current]tagging[]]">
+
   <$transclude />
+
 </$list>
 <$link>[...]</$link>
 </$list>
