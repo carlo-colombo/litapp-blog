@@ -36,7 +36,7 @@ type: text/vnd.tiddlywiki
         </script>
     `</$list>`
 </head>
-<body hx-boost="true" data-content-template=`<<contentTemplate>>` >
+<body data-content-template=`<<contentTemplate>>` >
     <header>
        <h1>
          <a href="/">`{{$:/config/blog/title}}`</a>
@@ -60,7 +60,6 @@ type: text/vnd.tiddlywiki
       - Generated  UTC `<<now "[UTC]YYYY-0MM-0DD 0hh:0mm" >>`
       - `{{$:/plugins/litapp/blog!!version}}`
     </footer>
- <script src="https://unpkg.com/htmx.org@1.9.9"></script>
 </body>
 </html>
 `
