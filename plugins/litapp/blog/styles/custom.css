@@ -77,6 +77,12 @@ h3 {
   }
 }
 
+.post {
+     h3 {
+        font-family: revert;
+    }
+}
+
 header {
   padding: 0;
   & h1 a {
@@ -109,12 +115,16 @@ article, section {
 }
 
 @media (max-width: 768px) {
-    header {
-        & h1 {
-            font-size: x-large;
-        }
-        & h3 {
-            font-size: large;
-        }
+    h1 {
+        font-size: x-large;
+    }
+    h2 {
+        font-size: large;
+    }
+    h3 {
+        font-size: small;
+    }
+    em {
+        font-size: x-small;
     }
 }
