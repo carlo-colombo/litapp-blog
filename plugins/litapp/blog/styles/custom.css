@@ -99,8 +99,13 @@ article video,
 section img,
 article img {
     max-width: 100%;
-    display: flex;
-    justify-content: center;
+}
+
+article, section {
+    & p:has(img, video){
+        display: flex;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 768px) {
