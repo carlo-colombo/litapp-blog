@@ -8,6 +8,4 @@ type: text/vnd.tiddlywiki
 
 {{$:/plugins/litapp/blog/styles/mvp.css||$:/core/templates/plain-text-tiddler}}
 
-{{$:/plugins/litapp/blog/styles/layout.css||$:/core/templates/plain-text-tiddler}}
-
 {{$:/plugins/litapp/blog/styles/custom.css||$:/core/templates/plain-text-tiddler}}

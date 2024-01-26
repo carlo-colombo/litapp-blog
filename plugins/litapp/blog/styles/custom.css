@@ -94,3 +94,22 @@ main {
     width: calc(33.33% - 8px);
   }
 }
+section video,
+article video,
+section img,
+article img {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    header {
+        & h1 {
+            font-size: x-large;
+        }
+        & h3 {
+            font-size: large;
+        }
+    }
+}

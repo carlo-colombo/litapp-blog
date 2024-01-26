@@ -23,7 +23,7 @@ body {
 }
 
 /* tablet breakpoint */
-@media (min-width: 768px) {
+@media (min-width: 1115px) {
   body {
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
