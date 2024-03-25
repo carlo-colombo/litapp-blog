@@ -3,7 +3,7 @@
     "chokidar": "^3.5.3",
     "esbuild": "^0.20.0",
     "execa": "^8.0.1",
-    "express": "^4.18.2",
+    "express": "^4.19.2",
     "prettier": "^3.2.5",
     "tiddlywiki": "^5.3.3"
   },
