@@ -112,6 +112,12 @@ article, section {
         display: flex;
         justify-content: center;
     }
+    
+    .entry.post {
+        & p:has(img, video){
+            display: block;
+        }
+    }
 }
 
 @media (max-width: 768px) {

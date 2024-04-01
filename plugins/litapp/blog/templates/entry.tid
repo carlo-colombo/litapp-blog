@@ -6,7 +6,7 @@ tags:
 title: $:/plugins/litapp/blog/templates/entry
 type: text/vnd.tiddlywiki
 
-<div class="post">
+<div class="post entry">
 
 <h2> {{!!title}} </h2>
 <em>
