@@ -134,3 +134,45 @@ article, section {
         font-size: x-small;
     }
 }
+
+.photos-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: start;
+    
+    * {
+      box-sizing: content-box;
+    }
+
+    .picture {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        .photo {
+          padding: 5px;
+          height: 100%;
+          img {
+            height: 100%;
+          }
+          a {
+            height: 100%;
+          }
+        }
+        
+        figcaption {
+          display:none;
+          font-size: medium;
+        }
+
+        &:hover {
+          .photo {
+            border: solid 1px red;
+            display: none;
+          }
+          figcaption {
+            display: unset;
+          }
+        }
+    }
+}

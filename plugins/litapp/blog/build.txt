@@ -30,6 +30,11 @@ static/index.html
 text/plain
 $:/plugins/litapp/blog/templates/page
 --render
+$:/plugins/litapp/blog/templates/photos
+static/photos.html
+text/plain
+$:/plugins/litapp/blog/templates/page
+--render
 [$:/plugins/sq/feeds/templates/rss]
 static/rss.xml
 text/plain

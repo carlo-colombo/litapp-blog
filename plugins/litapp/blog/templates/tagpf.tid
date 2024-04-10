@@ -6,8 +6,6 @@ type: text/vnd.tiddlywiki
 [all[current]tagging[]has:field[published]!sort[published]]
 \end
 
-<$transclude $variable="list-links" filter=<<publishedPhotos>> />
-
 <div class="home-container">
 
 <$list filter=<<publishedPhotos>> >
