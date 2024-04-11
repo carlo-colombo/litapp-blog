@@ -1,0 +1,24 @@
+tags:
+title: $:/plugins/litapp/blog/templates/gallery
+type: text/vnd.tiddlywiki
+
+\procedure publishedPhotos()
+[has:field[pixelfed]has:field[published]!sort[published]]
+\end
+
+<div class="gallery">
+    <$list filter=<<publishedPhotos>> >
+        <figure>
+            <$set name=imgurl filter="[all[current]get:field[image]]" >
+                <$link>
+                    <img src=<<imgurl>> loading=lazy/>
+                </$link>
+            </$set>
+            <figcaption>
+                <$link>
+                    {{!!description}}
+                </$link>
+            </figcaption>
+        </figure>
+    </$list>
+</div>

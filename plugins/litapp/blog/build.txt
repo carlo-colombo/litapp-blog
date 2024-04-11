@@ -30,8 +30,8 @@ static/index.html
 text/plain
 $:/plugins/litapp/blog/templates/page
 --render
-$:/plugins/litapp/blog/templates/photos
-static/photos.html
+$:/plugins/litapp/blog/templates/gallery
+static/gallery.html
 text/plain
 $:/plugins/litapp/blog/templates/page
 --render
