@@ -50,7 +50,7 @@ type: text/vnd.tiddlywiki
     </main>
     <section class="sidebar">
         <aside class="side">
-          `<$view tiddler="$:/plugins/litapp/blog/templates/tags" format="htmlwikified"/>`
+          `<$view tiddler="$:/plugins/litapp/blog/templates/sidebar" format="htmlwikified"/>`
         </aside>
     </section>
     <footer>
