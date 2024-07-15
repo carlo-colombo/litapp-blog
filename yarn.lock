@@ -760,10 +760,10 @@ strip-final-newline@^3.0.0:
   resolved "https://registry.yarnpkg.com/strip-final-newline/-/strip-final-newline-3.0.0.tgz#52894c313fbff318835280aed60ff71ebf12b8fd"
   integrity sha512-dOESqjYr96iWYylGObzd39EuNTa5VJxyvVAEm5Jnh7KGo75V43Hk1odPQkNDyXNmUR6k+gEiDVXnjB8HJ3crXw==
 
-tiddlywiki@^5.3.3:
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/tiddlywiki/-/tiddlywiki-5.3.3.tgz#7b98eadbbbc1475a6bb89c321eb4032e8db70b15"
-  integrity sha512-PkgVfZNpFFHyMmfFw91igXOJn8Z7IWg3NGXOX5EBqJwzGNeYYOIUg4FqCNsWoqBece20HxtkDue/vTf2jDtdZQ==
+tiddlywiki@^5.3.5:
+  version "5.3.5"
+  resolved "https://registry.yarnpkg.com/tiddlywiki/-/tiddlywiki-5.3.5.tgz#b3ff2e138d5b521610e8ce0925f99954361fd0c3"
+  integrity sha512-8pTmnQdkcHbol9D86Op7OGK4sGDqm19HWT2qgpSxPHfDG0yJ2rSBUTRuOMuh9GoPP0Tcz9+1Pe8A1m6pvd/zYQ==
 
 to-regex-range@^5.0.1:
   version "5.0.1"
