@@ -37,7 +37,10 @@ type: text/vnd.tiddlywiki
     `</$list>`
 </head>
 <body data-content-template=`<<contentTemplate>>` >
+    <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+    <label for="sidebar-toggle" class="sidebar-overlay"></label>
     <header>
+       <label for="sidebar-toggle" class="hamburger"><span>&#9776;</span></label>
        <h1>
          <a href="/">`{{$:/config/blog/title}}`</a>
        </h1>
@@ -49,6 +52,7 @@ type: text/vnd.tiddlywiki
         </article>
     </main>
     <section class="sidebar">
+        <label for="sidebar-toggle" class="close-sidebar">&times;</label>
         <aside class="side">
           `<$view tiddler="$:/plugins/litapp/blog/templates/sidebar" format="htmlwikified"/>`
         </aside>

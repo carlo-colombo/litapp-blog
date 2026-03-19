@@ -1,13 +1,12 @@
 {
   "devDependencies": {
-    "chokidar": "^3.6.0",
-    "esbuild": "^0.20.2",
-    "execa": "^8.0.1",
-    "express": "^4.19.2",
-    "prettier": "^3.2.5",
-    "tiddlywiki": "^5.3.3"
+    "chokidar": "^5.0.0",
+    "esbuild": "^0.27.4",
+    "execa": "^9.6.1",
+    "express": "^5.2.1",
+    "prettier": "^3.8.1",
+    "tiddlywiki": "^5.3.8"
   },
-  "dependencies": {},
   "scripts": {
     "tw": "npx tiddlywiki",
     "clean": "rm -rf editions/demo/output/static/*",

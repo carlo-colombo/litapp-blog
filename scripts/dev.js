@@ -7,12 +7,12 @@ const startTW = () => {
   console.log("Starting Tiddlywiki");
   return execa("tiddlywiki", ["editions/demo", "--listen", "--verbose"], {
     preferLocal: true,
+    stdout: "inherit",
+    stderr: "inherit",
     env: {
       TIDDLYWIKI_PLUGIN_PATH: "./plugins",
     },
-  })
-    .pipeStdout(process.stdout)
-    .pipeStderr(process.stderr);
+  });
 };
 
 const twWatcher = chokidar.watch("plugins", "editions");
@@ -25,18 +25,21 @@ twWatcher.on("ready", () => {
   twWatcher.on("all", async (event, path) => {
     console.log(event, path);
 
-    tw.kill("SIGTERM", {
-      forceKillAfterTimeout: 2000,
-    });
+    tw.kill("SIGTERM");
+    try {
+      await tw;
+    } catch (e) {
+      // ignore
+    }
 
     tw = startTW();
 
-    await execa("yarn", ["build-blog"])
-      .pipeStdout(process.stdout)
-      .pipeStderr(process.stderr);
+    await execa("yarn", ["build-blog"], { stdout: "inherit", stderr: "inherit" });
 
-    eventRes.write("event: change\n");
-    eventRes.write(`data: ${event} ${path}\n\n`);
+    if (eventRes) {
+      eventRes.write("event: change\n");
+      eventRes.write(`data: ${event} ${path}\n\n`);
+    }
   });
 });
 
