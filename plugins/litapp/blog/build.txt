@@ -35,12 +35,12 @@ static/gallery.html
 text/plain
 $:/plugins/litapp/blog/templates/page
 --render
-[$:/plugins/sq/feeds/templates/rss]
+[[$:/plugins/sq/feeds/templates/rss]]
 static/rss.xml
 text/plain
 $:/plugins/sq/feeds/templates/rss
 --render
-[$:/plugins/litapp/blog/sitemap]
+[[$:/plugins/litapp/blog/sitemap]]
 static/sitemap.xml
 text/plain
 $:/plugins/litapp/blog/sitemap
