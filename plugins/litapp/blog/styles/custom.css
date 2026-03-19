@@ -199,4 +199,12 @@ section {
   .gallery figure {
     width: 100%;
   }
+
+  .gallery figcaption {
+    display: none;
+  }
+
+  .gallery figure:hover img {
+    opacity: 1;
+  }
 }
