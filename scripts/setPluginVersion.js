@@ -3,7 +3,9 @@ import fs from "fs";
 const path = "./plugins/litapp/blog/plugin.info";
 
 const versionFromArgs = process.argv[2];
-const versionFromPackage = JSON.parse(fs.readFileSync("./package.json")).version;
+const versionFromPackage = JSON.parse(
+  fs.readFileSync("./package.json"),
+).version;
 
 const version = (versionFromArgs || versionFromPackage).replace(/^v/, "");
 

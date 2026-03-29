@@ -1,7 +1,7 @@
 import chokidar from "chokidar";
 import { execa } from "execa";
 import esbuild from "esbuild";
-import express from 'express';
+import express from "express";
 
 const startTW = () => {
   console.log("Starting Tiddlywiki");
@@ -34,7 +34,10 @@ twWatcher.on("ready", () => {
 
     tw = startTW();
 
-    await execa("yarn", ["build-blog"], { stdout: "inherit", stderr: "inherit" });
+    await execa("yarn", ["build-blog"], {
+      stdout: "inherit",
+      stderr: "inherit",
+    });
 
     if (eventRes) {
       eventRes.write("event: change\n");
@@ -43,20 +46,20 @@ twWatcher.on("ready", () => {
   });
 });
 
-const app = express()
+const app = express();
 
-app.use(express.static("./editions/demo/output/static"))
-app.get("/blog-build", (req, res)=>{
-      const headers = {
-        "Content-Type": "text/event-stream",
-        Connection: "keep-alive",
-        "Cache-Control": "no-cache",
-      };
-      res.writeHead(200, headers);
-      eventRes = res;
+app.use(express.static("./editions/demo/output/static"));
+app.get("/blog-build", (req, res) => {
+  const headers = {
+    "Content-Type": "text/event-stream",
+    Connection: "keep-alive",
+    "Cache-Control": "no-cache",
+  };
+  res.writeHead(200, headers);
+  eventRes = res;
 
-      return;
-})
-app.listen(9021, ()=>{
-    console.log("static blog on 9021")
-})
+  return;
+});
+app.listen(9021, () => {
+  console.log("static blog on 9021");
+});
