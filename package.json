@@ -5,12 +5,12 @@
     "execa": "^9.6.1",
     "express": "^5.2.1",
     "prettier": "^3.8.1",
-    "tiddlywiki": "^5.3.8"
+    "tiddlywiki": "5.3.5"
   },
   "scripts": {
     "tw": "npx tiddlywiki",
     "clean": "rm -rf editions/demo/output/static/*",
-    "build-blog": "yarn clean && tiddlywiki editions/demo --commands '[enlist:raw{$:/plugins/litapp/blog/build}]'",
+    "build-blog": "yarn clean && TIDDLYWIKI_PLUGIN_PATH=./plugins tiddlywiki editions/demo --commands '[enlist:raw{$:/plugins/litapp/blog/build}]'",
     "build": "TIDDLYWIKI_PLUGIN_PATH=./plugins tiddlywiki editions/demo/ --build index",
     "dev": "node scripts/dev.js",
     "prettier": "prettier plugins src scripts --write",
