@@ -5,7 +5,6 @@ title: $:/plugins/litapp/blog/templates/home
 type: text/vnd.tiddlywiki
 caption: Home
 
-\rules only
 <section class="home-container">
 <$list filter=[has:field[published]!sort[published]] >
 <div class={{{ [is[current]has:field[pixelfed]then[picture]else[post]] }}}>
