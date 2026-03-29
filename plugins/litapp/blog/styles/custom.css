@@ -8,7 +8,6 @@ img,
 video {
   max-width: 100%;
   height: auto;
-  min-width: 0;
 }
 
 :root {
@@ -45,19 +44,19 @@ body {
 
 .tags {
   padding-left: 0;
+}
 
-  & li {
-    display: inline;
+.tags li {
+  display: inline;
+}
 
-    & a {
-      border: solid 3px var(--color-accent);
-      padding: 0px 20px;
-      margin: 5px;
-      border-radius: 10px;
-      background-color: var(--color-shadow);
-      text-decoration-line: none;
-    }
-  }
+.tags li a {
+  border: solid 3px var(--color-accent);
+  padding: 0px 20px;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: var(--color-shadow);
+  text-decoration-line: none;
 }
 
 h1,
@@ -70,46 +69,42 @@ h3 {
 .home-container {
   display: flex;
   flex-wrap: wrap;
-
-  & .post {
-    width: 100%;
-  }
-
-  & .picture {
-    padding: 0 2px;
-    margin: 0 2px;
-    width: calc(100% - 4px);
-
-    & .photo a {
-      display: block;
-
-      > img {
-        width: 100%;
-      }
-    }
-  }
-
-  & .picture,
-  .post {
-    & hr {
-      margin: 2em 0;
-    }
-  }
 }
 
-.post {
-  h3 {
-    font-family: revert;
-  }
+.home-container .post {
+  width: 100%;
+}
+
+.home-container .picture {
+  padding: 0 2px;
+  margin: 0 2px;
+  width: calc(100% - 4px);
+}
+
+.home-container .picture .photo a {
+  display: block;
+}
+
+.home-container .picture .photo a > img {
+  width: 100%;
+}
+
+.home-container .picture hr,
+.home-container .post hr {
+  margin: 2em 0;
+}
+
+.post h3 {
+  font-family: revert;
 }
 
 header {
   padding: 0;
+}
 
-  & h1 a {
-    text-decoration: none;
-    color: inherit;
-  }
+header h1 a {
+  text-decoration: none;
+  color: inherit;
 }
 
 main {
@@ -129,21 +124,32 @@ article img {
   max-width: 100%;
 }
 
-article,
-section {
-  & img,
-  & video {
-    display: block;
-    margin: 0 auto;
-  }
+article img,
+section img,
+article video,
+section video {
+  display: block;
+  margin: 0 auto;
+}
 
-  .entry.post {
-    & img,
-    & video {
-      display: block;
-      margin: 0;
-    }
-  }
+article .entry.post img,
+section .entry.post img,
+article .entry.post video,
+section .entry.post video {
+  display: block;
+  margin: 0;
+}
+
+/* Fix for mvp.css fixed widths on mobile */
+pre,
+pre code,
+pre samp,
+form,
+input,
+label,
+select,
+textarea {
+  max-width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -170,46 +176,44 @@ section {
   justify-content: space-between;
   margin: 0 auto;
   width: 80%;
+}
 
-  figure {
-    width: calc(25% - 20px);
-    margin: 10px;
-    margin-bottom: 0;
-    position: relative;
-    align-self: center;
+.gallery figure {
+  width: calc(25% - 20px);
+  margin: 10px;
+  margin-bottom: 0;
+  position: relative;
+  align-self: center;
+}
 
-    &:hover {
-      img {
-        opacity: 0.3;
-      }
+.gallery figure:hover img {
+  opacity: 0.3;
+}
 
-      figcaption {
-        opacity: 1;
-      }
-    }
+.gallery figure:hover figcaption {
+  opacity: 1;
+}
 
-    img {
-      width: 100%;
-      object-fit: cover;
-    }
-  }
+.gallery figure img {
+  width: 100%;
+  object-fit: cover;
+}
 
-  figcaption {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(var(--color-accent), 0.85);
-    text-align: center;
-    padding: 10px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    font-size: small;
+.gallery figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(var(--color-accent), 0.85);
+  text-align: center;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: small;
+}
 
-    a {
-      color: white;
-      text-decoration: none;
-    }
-  }
+.gallery figcaption a {
+  color: white;
+  text-decoration: none;
 }
 
 @media (max-width: 480px) {
