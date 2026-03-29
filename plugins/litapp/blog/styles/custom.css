@@ -6,8 +6,8 @@
 
 img,
 video {
-  max-width: 100%;
-  height: auto;
+  max-width: 100% !important;
+  height: auto !important;
 }
 
 :root {
@@ -40,6 +40,8 @@ video {
 body {
   font-size: x-large;
   background-color: var(--color-shadow);
+  margin: 0;
+  padding: 0;
 }
 
 .tags {
@@ -69,6 +71,7 @@ h3 {
 .home-container {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .home-container .post {
@@ -77,16 +80,18 @@ h3 {
 
 .home-container .picture {
   padding: 0 2px;
-  margin: 0 2px;
-  width: calc(100% - 4px);
+  margin: 0;
+  width: 100%;
 }
 
 .home-container .picture .photo a {
   display: block;
+  width: 100%;
 }
 
 .home-container .picture .photo a > img {
   width: 100%;
+  display: block;
 }
 
 .home-container .picture hr,
@@ -109,11 +114,15 @@ header h1 a {
 
 main {
   padding-top: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
   .home-container .picture {
-    width: calc(33.33% - 8px);
+    width: 33.33%;
+    padding: 4px;
   }
 }
 
@@ -121,7 +130,7 @@ section video,
 article video,
 section img,
 article img {
-  max-width: 100%;
+  max-width: 100% !important;
 }
 
 article img,
@@ -175,7 +184,8 @@ textarea {
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
+  padding: 10px;
 }
 
 .gallery figure {
@@ -197,6 +207,7 @@ textarea {
 .gallery figure img {
   width: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .gallery figcaption {
@@ -218,7 +229,8 @@ textarea {
 
 @media (max-width: 480px) {
   .gallery figure {
-    width: calc(100% - 20px);
+    width: 100%;
+    margin: 10px 0;
   }
 
   .gallery figcaption {
