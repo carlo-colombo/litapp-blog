@@ -50,11 +50,31 @@ type: text/vnd.tiddlywiki
          `<$view tiddler=<<contentTemplate>> format="htmlwikified"/>`
     </main>
     <footer>
+      <div class="footer-links">
+        <h4 class="sr-only">Links</h4>
+        <ul>
+`<$list filter="[[$:/config/blog/links]indexes[]]" variable="link-title">`
+            <li>
+`<$set name="link-ref" value={{{ [[$:/config/blog/links]getindex<link-title>] }}}>`
+`<$list filter="[<link-ref>prefix[http]]" variable="ignore">`
+                  <a href="`<<link-ref>>`" target="_blank" rel="noopener noreferrer">`<<link-title>>`</a>
+`</$list>`
+`<$list filter="[<link-ref>!prefix[http]]" variable="ignore">`
+                  <a href="`<<link-ref>>`.html">`<<link-title>>`</a>
+`</$list>`
+`</$set>`
+            </li>
+`</$list>`
+        </ul>
+      </div>
       <div>
         © `<<now "YYYY">>` Carlo Colombo
       </div>
       <div>
-        Built with <a href="https://tiddlywiki.com">TiddlyWiki</a>
+        Built with <a href="https://tiddlywiki.com">TiddlyWiki</a> `{{$:/plugins/litapp/blog!!version}}`
+      </div>
+      <div class="build-info">
+        Generated `<<now "[UTC]YYYY-0MM-0DD 0hh:0mm" >>` UTC
       </div>
     </footer>
 </body>
