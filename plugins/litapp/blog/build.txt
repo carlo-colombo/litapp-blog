@@ -30,6 +30,11 @@ static/index.html
 text/plain
 $:/plugins/litapp/blog/templates/page
 --render
+$:/plugins/litapp/blog/templates/articles
+static/articles.html
+text/plain
+$:/plugins/litapp/blog/templates/page
+--render
 $:/plugins/litapp/blog/templates/gallery
 static/gallery.html
 text/plain

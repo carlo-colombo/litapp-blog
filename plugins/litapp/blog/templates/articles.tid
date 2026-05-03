@@ -1,0 +1,19 @@
+title: $:/plugins/litapp/blog/templates/articles
+type: text/vnd.tiddlywiki
+caption: Articles
+
+<section class="home-container">
+<$list filter="[has:field[published]!has:field[pixelfed]!sort[published]]" >
+<div class="post">
+<hr/>
+<$link /> - <$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
+<$transclude $tiddler="$:/plugins/litapp/blog/templates/entry/tags" />
+<$list filter="[is[current]tagging[]]">
+
+  <$transclude />
+
+</$list>
+<$link>[...]</$link>
+</div>
+</$list>
+</section>
