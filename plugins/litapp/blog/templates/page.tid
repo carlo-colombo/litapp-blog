@@ -71,7 +71,7 @@ type: text/vnd.tiddlywiki
         © `<<now "YYYY">>` Carlo Colombo
       </div>
       <div>
-        Built with <a href="https://tiddlywiki.com">TiddlyWiki</a> `{{$:/plugins/litapp/blog!!version}}`
+        Built with <a href="https://github.com/carlo-colombo/litapp-blog">litapp-blog</a> `{{$:/plugins/litapp/blog!!version}}`
       </div>
       <div class="build-info">
         Generated `<<now "[UTC]YYYY-0MM-0DD 0hh:0mm" >>` UTC
