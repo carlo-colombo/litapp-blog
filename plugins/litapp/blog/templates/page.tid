@@ -41,7 +41,7 @@ type: text/vnd.tiddlywiki
        <nav>
          <div class="site-branding">
            <a href="/" class="site-title">`{{$:/config/blog/title}}`</a>
-           <p class="site-subtitle">`{{$:/config/blog/subtitle}}`</p>
+           <p class="site-subtitle">`<$view tiddler="$:/config/blog/subtitle" format="htmlwikified"/>`</p>
          </div>
          <ul>
            <li><a href="/articles.html">Articles</a></li>
