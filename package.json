@@ -18,8 +18,9 @@
   },
   "type": "module",
   "name": "litapp-blog",
-  "version": "0.1.60",
+  "version": "0.2.0",
   "description": "Litapp Blog integration for Tiddlywiki",
+
   "repository": "https://github.com/carlo-colombo/litapp-blog",
   "author": "Carlo Colombo <carlo.colombo@gmx.com>",
   "license": "MIT"
