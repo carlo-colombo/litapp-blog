@@ -1,46 +1,32 @@
-created: 20231126231339785
-modified: 20231126231953914
-tags:
+caption: Home
 title: $:/plugins/litapp/blog/templates/home
 type: text/vnd.tiddlywiki
-caption: Home
 
-<section class="home-container">
-<$list filter=[has:field[published]!sort[published]] >
-<div class={{{ [is[current]has:field[pixelfed]then[picture]else[post]] }}}>
-<hr/>
-<$list filter="[is[current]!has:field[pixelfed]]" >
-<$link /> - <$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
-<$transclude $tiddler="$:/plugins/litapp/blog/templates/entry/tags" />
-<$list filter="[is[current]tagging[]]">
+<section class="home-sections">
+  <div class="articles-column">
+    <h2 class="section-title">Latest Articles</h2>
+    <$list filter="[has:field[published]!has:field[pixelfed]!sort[published]limit[5]]">
+      <div class="article-item">
+        <span class="article-date"><$view field="published" format="date" template="YYYY-MM-DD"/></span>
+        <$link class="article-title"><$view field="title"/></$link>
+      </div>
+    </$list>
+    <a href="/articles.html" class="view-all">View all articles →</a>
+  </div>
 
-  <$transclude />
-
-</$list>
-<$link>[...]</$link>
-</$list>
-
-<!-- photos -->
-<$list filter="[is[current]has:field[pixelfed]]" >
-<h3>
-    <$link overrideClass="">
-        <$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
-    </$link>
-</h3>
-<div class="photo">
-    <$link>
-        <$set name=imgurl filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]" >
-            <img src=<<imgurl>> />
-        </$set>
-    </$link>
-</div>
-<div>
-    {{!!description}}
-</div>
-
-</$list>
-<!-- photos -->
-
-</div>
-</$list>
+  <div class="photos-column">
+    <h2 class="section-title">Latest Photos</h2>
+    <div class="gallery-grid">
+      <$list filter="[has:field[pixelfed]has:field[published]!sort[published]limit[8]]">
+        <div class="gallery-item">
+          <$link>
+            <$set name=imgurl filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]">
+              <img src=<<imgurl>> alt={{!!title}} />
+            </$set>
+          </$link>
+        </div>
+      </$list>
+    </div>
+    <a href="/gallery.html" class="view-all">View all photos →</a>
+  </div>
 </section>

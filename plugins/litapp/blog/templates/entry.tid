@@ -1,20 +1,32 @@
-created: 20221122073702808
-creator: carlo
-modified: 20231125213959391
-modifier: carlo
-tags:
 title: $:/plugins/litapp/blog/templates/entry
 type: text/vnd.tiddlywiki
 
-<section class="post entry">
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title"><$view field="title"/></h1>
+    <div class="entry-meta">
+      <span class="entry-date"><$view field="published" format="date" template="DD MMM YYYY"/></span>
+      <$list filter="[is[current]has:field[pixelfed]]">
+        • <a href={{!!pixelfed}} target="_blank">View on Pixelfed</a>
+      </$list>
+    </div>
+  </header>
 
-<h2> {{!!title}} </h2>
-<em>
-    <$view field="published" format="date" template={{$:/language/Tiddler/DateFormat}}/>
-</em>
+  <div class="entry-content">
+    <$list filter="[is[current]has:field[pixelfed]]">
+        <img src={{!!image}} class="full-image" />
+        <p>{{!!description}}</p>
+    </$list>
+    <$list filter="[is[current]!has:field[pixelfed]]">
+        <$transclude mode="block"/>
+    </$list>
+  </div>
 
-<$transclude $tiddler="$:/plugins/litapp/blog/templates/entry/tags" />
-
-<$transclude  />
-
-</section>
+  <footer class="entry-footer">
+    <div class="entry-tags">
+      <$list filter="[is[current]tags[]]">
+        <span class="tag">#<$view field="title"/></span>
+      </$list>
+    </div>
+  </footer>
+</article>

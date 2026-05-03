@@ -37,30 +37,25 @@ type: text/vnd.tiddlywiki
     `</$list>`
 </head>
 <body data-content-template=`<<contentTemplate>>` >
-    <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
-    <label for="sidebar-toggle" class="sidebar-overlay"></label>
     <header>
-       <label for="sidebar-toggle" class="hamburger"><span>&#9776;</span></label>
-       <h1>
-         <a href="/">`{{$:/config/blog/title}}`</a>
-       </h1>
-       <h3>`<$view tiddler="$:/config/blog/subtitle" format="htmlwikified"/>`</h3>
+       <nav>
+         <a href="/" class="site-title">`{{$:/config/blog/title}}`</a>
+         <ul>
+           <li><a href="/articles.html">Articles</a></li>
+           <li><a href="/gallery.html">Gallery</a></li>
+         </ul>
+       </nav>
     </header>
     <main>
-        <article>
-             `<$view tiddler=<<contentTemplate>>format="htmlwikified"/>`
-        </article>
+         `<$view tiddler=<<contentTemplate>> format="htmlwikified"/>`
     </main>
-    <section class="sidebar">
-        <label for="sidebar-toggle" class="close-sidebar">&times;</label>
-        <aside class="side">
-          `<$view tiddler="$:/plugins/litapp/blog/templates/sidebar" format="htmlwikified"/>`
-        </aside>
-    </section>
     <footer>
-      © Carlo Colombo `<<now "YYYY">>`
-      - Generated  UTC `<<now "[UTC]YYYY-0MM-0DD 0hh:0mm" >>`
-      - `{{$:/plugins/litapp/blog!!version}}`
+      <div>
+        © `<<now "YYYY">>` Carlo Colombo
+      </div>
+      <div>
+        Built with <a href="https://tiddlywiki.com">TiddlyWiki</a>
+      </div>
     </footer>
 </body>
 </html>
