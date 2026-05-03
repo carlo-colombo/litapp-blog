@@ -33,7 +33,7 @@ header {
 header nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   max-width: 1000px;
   margin: 0 auto;
   width: 100%;
@@ -45,6 +45,13 @@ header nav {
   font-size: 1.25rem;
   color: var(--accent-color);
   text-decoration: none;
+}
+
+.site-subtitle {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--secondary-color);
+  font-family: var(--font-mono);
 }
 
 header ul {

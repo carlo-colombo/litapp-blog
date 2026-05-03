@@ -39,7 +39,10 @@ type: text/vnd.tiddlywiki
 <body data-content-template=`<<contentTemplate>>` >
     <header>
        <nav>
-         <a href="/" class="site-title">`{{$:/config/blog/title}}`</a>
+         <div class="site-branding">
+           <a href="/" class="site-title">`{{$:/config/blog/title}}`</a>
+           <p class="site-subtitle">`{{$:/config/blog/subtitle}}`</p>
+         </div>
          <ul>
            <li><a href="/articles.html">Articles</a></li>
            <li><a href="/gallery.html">Gallery</a></li>
