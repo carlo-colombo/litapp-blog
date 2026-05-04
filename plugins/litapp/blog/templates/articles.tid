@@ -9,6 +9,9 @@ type: text/vnd.tiddlywiki
     <div class="article-item">
       <span class="article-date"><$view field="published" format="date" template="YYYY-MM-DD"/></span>
       <$link class="article-title"><$view field="title"/></$link>
+      <$list filter="[<currentTiddler>addsuffix[ excerpt]] :filter[<currentTiddler>addsuffix[ excerpt]is[tiddler]]" variable="excerpt-tiddler">
+        <p class="article-excerpt"><$transclude tiddler=<<excerpt-tiddler>>/></p>
+      </$list>
     </div>
   </$list>
 </div>
