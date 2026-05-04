@@ -10,7 +10,7 @@ type: text/vnd.tiddlywiki
       <span class="article-date"><$view field="published" format="date" template="YYYY-MM-DD"/></span>
       <$link class="article-title"><$view field="title"/></$link>
       <$list filter="[tag<currentTiddler>] -[<currentTiddler>]" variable="excerpt-tiddler">
-        <p class="article-excerpt"><$transclude tiddler=<<excerpt-tiddler>>/></p>
+        <p class="article-excerpt"><$view tiddler=<<excerpt-tiddler>> format="htmlwikified"/></p>
       </$list>
     </div>
   </$list>
