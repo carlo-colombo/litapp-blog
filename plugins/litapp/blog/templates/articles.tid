@@ -9,14 +9,14 @@ type: text/vnd.tiddlywiki
     <div class="article-item">
       <span class="article-date"><$view field="published" format="date" template="YYYY-MM-DD"/></span>
       <$link class="article-title"><$view field="title"/></$link>
-      <$list filter="[tag<currentTiddler>] -[<currentTiddler>]" variable="excerpt-tiddler">
-        <div class="article-excerpt"><$transclude tiddler=<<excerpt-tiddler>> /></div>
-      </$list>
       <div class="article-tags">
         <$list filter="[is[current]tags[]]">
           <span class="tag">#<$view field="title"/></span>
         </$list>
       </div>
+      <$list filter="[tag<currentTiddler>] -[<currentTiddler>]" variable="excerpt-tiddler">
+        <div class="article-excerpt"><$transclude tiddler=<<excerpt-tiddler>> /></div>
+      </$list>
     </div>
   </$list>
 </div>

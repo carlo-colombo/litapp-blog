@@ -285,8 +285,29 @@ blockquote {
   font-style: italic;
 }
 
-/* Utils */
-.entry-header {
+.article-excerpt img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.article-tags {
+  margin: 0.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.article-tags .tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--secondary-color);
+  background: var(--code-bg);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
   margin-bottom: 2rem;
   text-align: center;
 }
