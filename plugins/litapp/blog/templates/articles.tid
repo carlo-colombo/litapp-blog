@@ -10,8 +10,8 @@ type: text/vnd.tiddlywiki
       <span class="article-date"><$view field="published" format="date" template="YYYY-MM-DD"/></span>
       <$link class="article-title"><$view field="title"/></$link>
       <div class="article-tags">
-        <$list filter="[is[current]tags[]]">
-          <span class="tag">#<$view field="title"/></span>
+        <$list filter="[is[current]tags[]!prefix[pf:]]">
+          <a href={{{ [<currentTiddler>addprefix[/tags/]addsuffix[.html]] }}} class="tag">#<$view field="title"/></a>
         </$list>
       </div>
       <$list filter="[tag<currentTiddler>] -[<currentTiddler>]" variable="excerpt-tiddler">

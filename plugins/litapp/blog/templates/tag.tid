@@ -1,0 +1,24 @@
+title: $:/plugins/litapp/blog/templates/tag
+type: text/vnd.tiddlywiki
+
+<article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">Tag: <$view field="title"/></h1>
+  </header>
+
+  <div class="entry-content">
+    <div class="articles-list">
+      <$list filter="[tag<currentTiddler>has:field[published]!sort[published]]">
+        <div class="article-item">
+          <span class="article-date"><$view field="published" format="date" template="YYYY-MM-DD"/></span>
+          <$link class="article-title"><$view field="title"/></$link>
+          <div class="article-tags">
+            <$list filter="[is[current]tags[]!prefix[pf:]]">
+              <a href={{{ [<currentTiddler>addprefix[/tags/]addsuffix[.html]] }}} class="tag">#<$view field="title"/></a>
+            </$list>
+          </div>
+        </div>
+      </$list>
+    </div>
+  </div>
+</article>

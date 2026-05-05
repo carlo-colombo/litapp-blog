@@ -24,8 +24,8 @@ type: text/vnd.tiddlywiki
 
   <footer class="entry-footer">
     <div class="entry-tags">
-      <$list filter="[is[current]tags[]]">
-        <span class="tag">#<$view field="title"/></span>
+      <$list filter="[is[current]tags[]!prefix[pf:]]">
+        <a href={{{ [<currentTiddler>addprefix[/tags/]addsuffix[.html]] }}} class="tag">#<$view field="title"/></a>
       </$list>
     </div>
   </footer>
