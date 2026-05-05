@@ -12,6 +12,15 @@ type: text/vnd.tiddlywiki
       </div>
     </$list>
     <a href="/articles.html" class="view-all">View all articles →</a>
+
+    <h2 class="section-title">Tags</h2>
+    <div class="article-tags">
+      <$list filter="[has:field[published]!has:field[pixelfed]tags[]!prefix[pf:]sort[title]]">
+        <a href={{{ [<currentTiddler>addprefix[/tags/]addsuffix[.html]] }}} class="tag">
+          #<$view field="title"/> [<$count filter="[has:field[published]!has:field[pixelfed]tag<currentTiddler>]"/>]
+        </a>
+      </$list>
+    </div>
   </div>
 
   <div class="photos-column">
