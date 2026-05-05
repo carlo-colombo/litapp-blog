@@ -21,7 +21,7 @@ type: text/vnd.tiddlywiki
 <$set name="loc" filter="[all[current]encodeuricomponent[]addsuffix[.html]]">
 `  <url>
     <loc>`{{$:/config/blog/SiteBaseUrl}}/<<loc>>`</loc>
-    <lastmod>`<$view field="modified" format="date" template="YYYY-MM-DD"><$view field="published" format="date" template="YYYY-MM-DD"/></$view>`</lastmod>
+    <lastmod>`<$view field="modified" format="date" template="YYYY-0MM-0DD"><$view field="published" format="date" template="YYYY-0MM-0DD"/></$view>`</lastmod>
   </url>
 `</$set>
 </$list>
