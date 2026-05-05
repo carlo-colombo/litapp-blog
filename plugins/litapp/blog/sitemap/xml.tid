@@ -2,19 +2,34 @@ tags:
 title: $:/plugins/litapp/blog/sitemap
 type: text/vnd.tiddlywiki
 
-
 \import [[$:/core/ui/PageMacros]]
 \define tv-wikilink-template() $uri_encoded$.html
 \whitespace trim
 
 `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-`<$list filter="[has:field[published]] [has:field[published]tags[]]">
-    <$set filter="[all[current]encodeuricomponent[]addsuffix[.html]]" name="loc">`
-        <url>
-            <loc>`{{$:/config/blog/SiteBaseUrl}}/<<loc>>`</loc>
-        </url>
-    `</$set>
-</$list>`
-</urlset>
-`
+  <url>
+    <loc>`{{$:/config/blog/SiteBaseUrl}}/`</loc>
+  </url>
+  <url>
+    <loc>`{{$:/config/blog/SiteBaseUrl}}/articles.html`</loc>
+  </url>
+  <url>
+    <loc>`{{$:/config/blog/SiteBaseUrl}}/gallery.html`</loc>
+  </url>
+`<$list filter="[has:field[published]]">
+<$set name="loc" filter="[all[current]encodeuricomponent[]addsuffix[.html]]">
+`  <url>
+    <loc>`{{$:/config/blog/SiteBaseUrl}}/<<loc>>`</loc>
+    <lastmod>`<$view field="modified" format="date" template="YYYY-MM-DD"><$view field="published" format="date" template="YYYY-MM-DD"/></$view>`</lastmod>
+  </url>
+`</$set>
+</$list>
+<$list filter="[has:field[published]tags[]!prefix[pf:]sort[title]]">
+<$set name="loc" filter="[all[current]encodeuricomponent[]addprefix[tags/]addsuffix[.html]]">
+`  <url>
+    <loc>`{{$:/config/blog/SiteBaseUrl}}/<<loc>>`</loc>
+  </url>
+`</$set>
+</$list>
+`</urlset>`

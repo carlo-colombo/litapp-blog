@@ -8,6 +8,7 @@ A TiddlyWiki-based static site generator (SSG) for modern, developer-centric blo
 - **Mobile-First:** Fully responsive layout that looks great on everything from phones to desktops.
 - **Dynamic Tag Pages:** Automatically generates dedicated pages for every tag used in your articles, allowing users to browse by topic.
 - **Cross-Linked Navigation:** Tags are automatically linked to their respective tag pages across all articles and lists.
+- **Sitemap & RSS:** Automatically generates a valid `sitemap.xml` and an RSS feed for better SEO and discoverability.
 - **Masonry Gallery:** Automatically handles photo galleries with original image proportions using a modern masonry layout.
 - **Data-Driven Navigation:** Footer links and site metadata are easily configured through TiddlyWiki data tiddlers.
 - **TiddlyWiki Power:** Leverage the full power of TiddlyWiki filters, templates, and plugins for content creation.
