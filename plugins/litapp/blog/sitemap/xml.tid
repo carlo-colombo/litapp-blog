@@ -6,21 +6,22 @@ type: text/vnd.tiddlywiki
 \define tv-wikilink-template() $uri_encoded$.html
 \whitespace trim
 
+<$wikify name="siteUrl" text={{$:/config/blog/SiteBaseUrl}} output="text">
 `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>`{{$:/config/blog/SiteBaseUrl}}/`</loc>
+    <loc>`<<siteUrl>>`/</loc>
   </url>
   <url>
-    <loc>`{{$:/config/blog/SiteBaseUrl}}/articles.html`</loc>
+    <loc>`<<siteUrl>>`/articles.html`</loc>
   </url>
   <url>
-    <loc>`{{$:/config/blog/SiteBaseUrl}}/gallery.html`</loc>
+    <loc>`<<siteUrl>>`/gallery.html`</loc>
   </url>
 `<$list filter="[has:field[published]]">
 <$set name="loc" filter="[all[current]encodeuricomponent[]addsuffix[.html]]">
 `  <url>
-    <loc>`{{$:/config/blog/SiteBaseUrl}}/<<loc>>`</loc>
+    <loc>`<<siteUrl>>`/<<loc>>`</loc>
     <lastmod>`<$view field="modified" format="date" template="YYYY-0MM-0DD"><$view field="published" format="date" template="YYYY-0MM-0DD"/></$view>`</lastmod>
   </url>
 `</$set>
@@ -28,8 +29,9 @@ type: text/vnd.tiddlywiki
 <$list filter="[has:field[published]tags[]!prefix[pf:]sort[title]]">
 <$set name="loc" filter="[all[current]encodeuricomponent[]addprefix[tags/]addsuffix[.html]]">
 `  <url>
-    <loc>`{{$:/config/blog/SiteBaseUrl}}/<<loc>>`</loc>
+    <loc>`<<siteUrl>>`/<<loc>>`</loc>
   </url>
 `</$set>
 </$list>
 `</urlset>`
+</$wikify>
