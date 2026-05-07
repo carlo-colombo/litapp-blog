@@ -3,6 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { execSync } from "node:child_process";
 import { XMLParser, XMLValidator } from "fast-xml-parser";
+import test from "node:test";
+import assert from "node:assert";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.join(__dirname, "..");
@@ -15,73 +17,52 @@ const rssPath = path.join(
   "rss.xml",
 );
 
-async function runTest() {
-  console.log("Building blog...");
-  execSync("yarn build-blog", { stdio: "inherit", cwd: rootDir });
+test("RSS generation", async (t) => {
+  await t.test("Build blog", () => {
+    execSync("yarn build-blog", { stdio: "inherit", cwd: rootDir });
+  });
 
-  console.log("Verifying rss.xml...");
-  if (!fs.existsSync(rssPath)) {
-    throw new Error("rss.xml does not exist");
-  }
+  await t.test("Verify rss.xml existence and content", () => {
+    assert.strictEqual(fs.existsSync(rssPath), true, "rss.xml does not exist");
+    const content = fs.readFileSync(rssPath, "utf-8");
+    assert.notStrictEqual(content.length, 0, "rss.xml is empty");
 
-  const content = fs.readFileSync(rssPath, "utf-8");
-
-  if (content.length === 0) {
-    throw new Error("rss.xml is empty");
-  }
-
-  // 1. Validate XML Well-formedness
-  console.log("Validating XML well-formedness...");
-  const validationResult = XMLValidator.validate(content);
-  if (validationResult !== true) {
-    throw new Error(
-      `XML validation failed: ${validationResult.err.msg} at line ${validationResult.err.line}, col ${validationResult.err.col}`,
+    // 1. Validate XML Well-formedness
+    const validationResult = XMLValidator.validate(content);
+    assert.strictEqual(
+      validationResult,
+      true,
+      validationResult !== true
+        ? `XML validation failed: ${validationResult.err.msg} at line ${validationResult.err.line}, col ${validationResult.err.col}`
+        : "",
     );
-  }
 
-  // 2. Parse and check structure
-  console.log("Parsing RSS content...");
-  const parser = new XMLParser();
-  const jObj = parser.parse(content);
+    // 2. Parse and check structure
+    const parser = new XMLParser();
+    const jObj = parser.parse(content);
 
-  const channel = jObj.rss?.channel;
-  if (!channel) {
-    throw new Error("rss.xml is missing <channel> tag");
-  }
+    const channel = jObj.rss?.channel;
+    assert.ok(channel, "rss.xml is missing <channel> tag");
+    assert.strictEqual(
+      channel.title,
+      "Litapp Blog",
+      `Unexpected channel title: ${channel.title}`,
+    );
 
-  if (channel.title !== "Litapp Blog") {
-    throw new Error(`Unexpected channel title: ${channel.title}`);
-  }
+    const items = Array.isArray(channel.item) ? channel.item : [channel.item];
+    const findItemByTitle = (title) => items.find((i) => i.title === title);
 
-  const items = Array.isArray(channel.item) ? channel.item : [channel.item];
+    assert.ok(findItemByTitle("Test Post 1"), "rss.xml does not contain Test Post 1");
 
-  const findItemByTitle = (title) => items.find((i) => i.title === title);
-
-  if (!findItemByTitle("Test Post 1")) {
-    throw new Error("rss.xml does not contain Test Post 1");
-  }
-
-  const ampItem = findItemByTitle("Test & Ampersand");
-  if (!ampItem) {
-    throw new Error("rss.xml does not contain 'Test & Ampersand'");
-  }
-  if (
-    ampItem.description !== "This is a test post with & in title and description."
-  ) {
-    throw new Error(
+    const ampItem = findItemByTitle("Test & Ampersand");
+    assert.ok(ampItem, "rss.xml does not contain 'Test & Ampersand'");
+    assert.strictEqual(
+      ampItem.description,
+      "This is a test post with & in title and description.",
       `Description mismatch for 'Test & Ampersand': ${ampItem.description}`,
     );
-  }
 
-  const specialItem = findItemByTitle('Test <Tag> & "Quote"');
-  if (!specialItem) {
-    throw new Error("rss.xml does not contain 'Test <Tag> & \"Quote\"'");
-  }
-
-  console.log("RSS generation test passed!");
-}
-
-runTest().catch((err) => {
-  console.error(err);
-  process.exit(1);
+    const specialItem = findItemByTitle('Test <Tag> & "Quote"');
+    assert.ok(specialItem, "rss.xml does not contain 'Test <Tag> & \"Quote\"'");
+  });
 });
