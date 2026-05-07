@@ -1,7 +1,7 @@
-import { execa } from "execa";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { execSync } from "node:child_process";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.join(__dirname, "..");
@@ -9,7 +9,8 @@ const rssPath = path.join(rootDir, "editions", "demo", "output", "static", "rss.
 
 async function runTest() {
   console.log("Building blog...");
-  await execa("yarn", ["build-blog"], { stdio: "inherit" });
+  // Use child_process.execSync to avoid dependency on execa
+  execSync("yarn build-blog", { stdio: "inherit", cwd: rootDir });
 
   console.log("Verifying rss.xml...");
   if (!fs.existsSync(rssPath)) {
