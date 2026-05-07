@@ -1,0 +1,4 @@
+title: $:/config/feeds/xml/url
+type: text/vnd.tiddlywiki
+
+[{$:/config/feeds/SiteBaseUrl}addsuffix[rss.xml]]

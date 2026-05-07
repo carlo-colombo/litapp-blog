@@ -33,10 +33,10 @@ static/gallery.html
 text/plain
 $:/plugins/litapp/blog/templates/page
 --render
-[[$:/plugins/sq/feeds/templates/rss]]
+[[$:/plugins/litapp/blog/templates/rss]]
 static/rss.xml
 text/plain
-$:/plugins/sq/feeds/templates/rss
+$:/plugins/litapp/blog/templates/rss
 --render
 [[$:/plugins/litapp/blog/sitemap]]
 static/sitemap.xml

@@ -1,0 +1,4 @@
+title: $:/config/feeds/description
+type: text/vnd.tiddlywiki
+
+A TiddlyWiki-based static site generator for modern, developer-centric blogs.

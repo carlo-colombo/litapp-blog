@@ -3,6 +3,8 @@ name: Deploy plugin demo Wiki to Pages
 on:
   push:
     branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
   workflow_dispatch:
 
@@ -56,7 +58,11 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}
+      - name: Run Tests
+        run: ${{ steps.detect-package-manager.outputs.runner }} run test
+        working-directory: ${{ env.BUILD_PATH }}
       - name:  'Automated Version Bump'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         id: 'version-bump'
         uses:  'phips28/gh-action-bump-version@v11.0.7'
         env:
@@ -64,6 +70,7 @@ jobs:
         with:
           version-type:  'patch'
       - name: Set Plugin version
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} run set-plugin-version ${{ steps.version-bump.outputs.newTag}}
       - name: Build
@@ -76,6 +83,7 @@ jobs:
           path: ${{ env.BUILD_PATH }}/editions/demo/output
 
   deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
