@@ -5,17 +5,17 @@ type: text/vnd.tiddlywiki
 `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>`<$text text={{$:/config/feeds/title}}/>`</title>
-  <description>`<$text text={{$:/config/feeds/description}}/>`</description>
-  <link>`<$text text={{$:/config/feeds/SiteBaseUrl}}/>`</link>
-  <atom:link rel="self" type="application/rss+xml" href="`<$text text={{{ [{$:/config/feeds/SiteBaseUrl}addsuffix[rss.xml]] }}}/>`" />
+  <title>`<$text text={{{ [{$:/config/feeds/title}trim[]] }}}/>`</title>
+  <description>`<$text text={{{ [{$:/config/feeds/description}trim[]] }}}/>`</description>
+  <link>`<$text text={{{ [{$:/config/feeds/SiteBaseUrl}trim[]] }}}/>`</link>
+  <atom:link rel="self" type="application/rss+xml" href="`<$text text={{{ [{$:/config/feeds/SiteBaseUrl}trim[]removesuffix[/]addsuffix[/rss.xml]] }}}/>`" />
 `<$list filter={{$:/config/feeds/filter}} variable="t">
 `    <item>
-      <title>`<$text text={{{ [<t>get[title]] }}}/>`</title>
-      <description>`<$text text={{{ [<t>get[description]] }}}/>`</description>
+      <title>`<$text text={{{ [<t>get[title]trim[]] }}}/>`</title>
+      <description>`<$text text={{{ [<t>get[description]trim[]] }}}/>`</description>
       <pubDate>`<$view tiddler=<<t>> field="published" format="date" template="[UTC]ddd, 0DD MMM YYYY 0hh:0mm:0ss"/>` GMT</pubDate>
-      <link>`<$text text={{{ [<t>encodeuricomponent[]addsuffix[.html]addprefix{$:/config/feeds/SiteBaseUrl}] }}}/>`</link>
-      <guid isPermaLink="true">`<$text text={{{ [<t>encodeuricomponent[]addsuffix[.html]addprefix{$:/config/feeds/SiteBaseUrl}] }}}/>`</guid>
+      <link>`<$text text={{{ [<t>encodeuricomponent[]addsuffix[.html]addprefix{$:/config/feeds/SiteBaseUrl}trim[]] }}}/>`</link>
+      <guid isPermaLink="true">`<$text text={{{ [<t>encodeuricomponent[]addsuffix[.html]addprefix{$:/config/feeds/SiteBaseUrl}trim[]] }}}/>`</guid>
     </item>
 `</$list>
 `</channel>
