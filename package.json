@@ -10,9 +10,10 @@
   "scripts": {
     "tw": "npx tiddlywiki",
     "clean": "rm -rf editions/demo/output/static/*",
-    "build-blog": "yarn clean && TIDDLYWIKI_PLUGIN_PATH=./plugins tiddlywiki editions/demo --commands '[enlist:raw{$:/plugins/litapp/blog/build}]'",
-    "build": "TIDDLYWIKI_PLUGIN_PATH=./plugins tiddlywiki editions/demo/ --build index",
+    "build-blog": "yarn clean && TIDDLYWIKI_PLUGIN_PATH=./plugins npx tiddlywiki editions/demo --commands '[enlist:raw{$:/plugins/litapp/blog/build}]'",
+    "build": "TIDDLYWIKI_PLUGIN_PATH=./plugins npx tiddlywiki editions/demo/ --build index",
     "dev": "node scripts/dev.js",
+    "test": "node scripts/test-rss.js",
     "prettier": "prettier plugins src scripts --write",
     "set-plugin-version": "node scripts/setPluginVersion.js"
   },
