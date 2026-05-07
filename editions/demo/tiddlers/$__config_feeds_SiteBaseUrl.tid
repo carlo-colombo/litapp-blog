@@ -1,4 +1,6 @@
+created: 20260507191805493
+modified: 20260507191807427
 title: $:/config/feeds/SiteBaseUrl
 type: text/vnd.tiddlywiki
 
-https://example.com/
+{{$:/config/blog/SiteBaseUrl}}

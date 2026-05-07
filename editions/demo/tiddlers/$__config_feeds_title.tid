@@ -1,4 +1,6 @@
+created: 20260507191405792
+modified: 20260507191407968
 title: $:/config/feeds/title
 type: text/vnd.tiddlywiki
 
-Litapp Blog
+{{$:/config/blog/title}}

@@ -2,8 +2,20 @@ tags:
 title: $:/plugins/litapp/blog/Config
 type: text/vnd.tiddlywiki
 
+!! Blog Settings
 
-|$:/config/feeds/SiteBaseUrl|<$edit-text tiddler="$:/config/feeds/SiteBaseUrl" tag=input />|{{$:/config/feeds/SiteBaseUrl}}|
-|$:/config/blog/SiteBaseUrl|<$edit-text tiddler="$:/config/blog/SiteBaseUrl" tag=input />|{{$:/config/blog/SiteBaseUrl}}|
-|$:/config/blog/title|<$edit-text tiddler="$:/config/blog/title" tag=input />|{{$:/config/blog/title}}|
-|$:/config/blog/subtitle|<$edit-text tiddler="$:/config/blog/subtitle" tag=input />|{{$:/config/blog/subtitle}}|
+|!Configuration|!Editor|!Current Value|
+|$:/config/blog/title|<$edit-text tiddler="$:/config/blog/title" tag=input default="" />|{{$:/config/blog/title}}|
+|$:/config/blog/subtitle|<$edit-text tiddler="$:/config/blog/subtitle" tag=input default="" />|{{$:/config/blog/subtitle}}|
+|$:/config/blog/SiteBaseUrl|<$edit-text tiddler="$:/config/blog/SiteBaseUrl" tag=input default="" />|{{$:/config/blog/SiteBaseUrl}}|
+|$:/config/blog/author|<$edit-text tiddler="$:/config/blog/author" tag=input default="" />|{{$:/config/blog/author}}|
+|$:/config/blog/environment|<$edit-text tiddler="$:/config/blog/environment" tag=input default="prod" />|{{$:/config/blog/environment}}|
+|$:/config/blog/links|Edit as data tiddler: [[$:/config/blog/links]]|{{$:/config/blog/links}}|
+
+!! RSS Feed Settings
+
+|!Configuration|!Editor|!Current Value|
+|$:/config/feeds/title|<$edit-text tiddler="$:/config/feeds/title" tag=input default="" />|{{$:/config/feeds/title}}|
+|$:/config/feeds/description|<$edit-text tiddler="$:/config/feeds/description" tag=input default="" />|{{$:/config/feeds/description}}|
+|$:/config/feeds/SiteBaseUrl|<$edit-text tiddler="$:/config/feeds/SiteBaseUrl" tag=input default="" />|{{$:/config/feeds/SiteBaseUrl}}|
+|$:/config/feeds/filter|<$edit-text tiddler="$:/config/feeds/filter" tag=input default="[has:field[published]!sort[published]limit[20]]" />|{{$:/config/feeds/filter}}|
