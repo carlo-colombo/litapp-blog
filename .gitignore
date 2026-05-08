@@ -1,2 +1,4 @@
 node_modules
 editions/demo/output
+editions/demo/tiddlers/$__StoryList_*
+editions/demo/tiddlers/$__Import.tid
