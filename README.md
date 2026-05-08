@@ -10,6 +10,7 @@ A TiddlyWiki-based static site generator (SSG) for modern, developer-centric blo
 - **Cross-Linked Navigation:** Tags are automatically linked to their respective tag pages across all articles and lists.
 - **Sitemap & RSS:** Automatically generates a valid `sitemap.xml` and an RSS feed for better SEO and discoverability.
 - **Masonry Gallery:** Automatically handles photo galleries with original image proportions using a modern masonry layout.
+- **Cooklang Support:** Built-in support for rendering [Cooklang](https://cooklang.org/) recipes with automatic ingredient lists and step-by-step instructions.
 - **Data-Driven Navigation:** Footer links and site metadata are easily configured through TiddlyWiki data tiddlers.
 - **TiddlyWiki Power:** Leverage the full power of TiddlyWiki filters, templates, and plugins for content creation.
 
@@ -39,7 +40,15 @@ yarn dev
 - TiddlyWiki will be available on its default port (usually `8080`).
 - The static blog preview will be served on port `9021`.
 
-## Building the Blog
+### Testing
+
+The project uses Node.js's built-in test runner with experimental snapshot testing to ensure the generated blog stays consistent.
+
+```bash
+yarn test
+```
+
+## Building
 
 To generate the static HTML files for your blog:
 
@@ -48,6 +57,23 @@ yarn build-blog
 ```
 
 The output will be generated in `editions/demo/output/static/`.
+
+To build a standalone TiddlyWiki `index.html` file (useful for full wiki access):
+
+```bash
+yarn build
+```
+
+## Maintenance
+
+- **Format Code:** Uses Prettier to format the codebase.
+  ```bash
+  yarn prettier
+  ```
+- **Update Plugin Version:** Synchronizes the TiddlyWiki plugin version with the `package.json` version.
+  ```bash
+  yarn set-plugin-version
+  ```
 
 ## Project Structure
 
