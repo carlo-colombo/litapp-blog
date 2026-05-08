@@ -14,7 +14,7 @@
     "build-blog": "yarn clean && TIDDLYWIKI_PLUGIN_PATH=./plugins npx tiddlywiki editions/demo --commands '[enlist:raw{$:/plugins/litapp/blog/build}]'",
     "build": "TIDDLYWIKI_PLUGIN_PATH=./plugins npx tiddlywiki editions/demo/ --build index",
     "dev": "node scripts/dev.js",
-    "test": "node --test scripts/test-*.js",
+    "test": "node --test --experimental-test-snapshots scripts/test-*.js",
     "prettier": "prettier plugins src scripts --write",
     "set-plugin-version": "node scripts/setPluginVersion.js"
   },
