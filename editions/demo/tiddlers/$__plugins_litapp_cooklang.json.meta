@@ -1,0 +1,11 @@
+author: Carlo Colombo
+core-version: >=5.1.22
+dependents: 
+description: Cooklang support for Tiddlywiki
+list: README DEVELOP
+name: Cooklang
+plugin-type: plugin
+source: https://github.com/carlo-colombo/cooklang-tiddlywiki
+title: $:/plugins/litapp/cooklang
+type: application/json
+version: 0.1.9

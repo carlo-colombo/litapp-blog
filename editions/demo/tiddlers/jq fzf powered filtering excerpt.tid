@@ -1,0 +1,11 @@
+created: 20231118081124567
+creator: carlo
+modified: 20231128070648411
+modifier: carlo
+tags: [[jq fzf powered filtering]] exported
+title: jq fzf powered filtering excerpt
+type: text/vnd.tiddlywiki
+
+When needing to explore a JSON file for a long time I just reached into my `history` and looked for a oneliner that I copied from a [[github gist|https://github.com/fiatjaf/awesome-jq#command-line]] `echo '' | fzf --print-query --preview "cat *.json | jq {q}"`. This worked quite well, but I have now decided to improve it leveraging the fzf features.
+
+[img[jqz.gif]]

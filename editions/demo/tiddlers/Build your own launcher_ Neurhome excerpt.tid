@@ -1,0 +1,16 @@
+created: 20231222225947592
+creator: carlo
+modified: 20231222232952136
+modifier: carlo
+tags: [[Build your own launcher: Neurhome]]
+title: Build your own launcher: Neurhome excerpt
+type: text/vnd.tiddlywiki
+
+!!!! TL;DR; 
+
+I became accustomed to the features of an experimental Nokia Android launcher, and during the pandemic, I rebuilt it using Flutter and then again with Kotlin Compose. I'm the only user, and anyone can download it from https://github.com/carlo-colombo/neurhome/releases.
+
+[img[https://litapp-blog-images.s3.nl-ams.scw.cloud/manual/neurhome.gif]]
+
+!!! 2016-2019 Z Launcher
+[[Z Launcher|https://en.wikipedia.org/wiki/Z_Launcher]] was an experimental launcher from Nokia that learned users' application habits based on the time of day, day of the week, and location. It also allowed users to quickly search for applications and contacts by scribbling letters on the home screen. When the experiments ended, I was still able to retrieve the APK from an online repository. However, the layout eventually broke on my Pixel 3a, and I had to abandon it in favor of the default launcher.

@@ -1,0 +1,57 @@
+created: 20231222210333350
+creator: carlo
+modified: 20231222233525405
+modifier: carlo
+published: 20231223003525404
+tags: android compose flutter
+title: Build your own launcher: Neurhome
+type: text/vnd.tiddlywiki
+
+{{Build your own launcher: Neurhome excerpt}}
+
+!!! 2019 Neurhome
+
+I missed the convenience of being able to find specific applications based on the time of day and other criteria. I also realized that I preferred to search for applications by name rather than sifting through screens of similar icons.
+
+Although I had tried to learn Android development in the past, I never fully grasped it. However, Flutter's declarative UI seemed much more approachable.
+
+The initial plan was to recreate the features of Z Launcher: scribbling on the screen to filter applications and identifying habits based on location and time. I chose the name "Neurhome" as a portmanteau of "neurons" and "home" to reflect the use of neural networks or AI to identify habits.
+
+Flutter allowed me to quickly create a launcher that combined several existing packages: locations, launcher assist, Wi-Fi, geohash, and more.
+
+!!! 2020 Unemployed lockdown
+
+In 2020 I found myself unemployed (like most of my office that has been laid off) and in lockdown (like the rest of the world). While doing interviews and going through all that mess I picked up Neurhome.
+
+!!!! Listing Apps and Tracking Usage
+
+I began by creating a system to track the usage of applications on my phone. This involved storing the names of the applications, the times they were launched, and their locations (latitude, longitude, geohash, and Wi-Fi access point). This data is then used to identify patterns in my usage and to predict which applications I was likely to launch at a given time.
+
+!!!! Scribble Search
+
+In order to enable scribble search, I implemented a feature that allows to draw letters on the screen, I then exported this image on my computer to quickly experiments with some OCR libraries. The details are a bit fuzzy but I think to remember that OCR is optimized for sequence of letters not for single characters thus the identification success was quite low. At that point I realized that I could use a T9 like keyboard and matching, and abandoned scribble recognition. 
+
+!!!! Keyboard Input
+
+Inspired by the t9 predictive text system, I developed a keyboard input method that allowed to quickly search for applications by typing letters. The keyboard would suggest the most likely applications based on the letters that had been entered. This input method proved to be much more reliable than the scribble search feature.
+
+The letters are grouped in the classical telephone keypad group (plus numbers), and when pressed they letters are append to a regex, the regex is anchored to the word boundary to be able to filter for any word in the application labels and also ignore the awful My prefix that is used in some many apps (even if currently I only have 1 banking app called My..., but in the past I have many more).
+
+!!! 2022 Entering Android Compose
+
+Since 2020 I used continuously Neurhome as my Home launcher but I began to question whether Flutter was the right choice for the project. In Neurhome required to reach often in the platform code (Android) so Flutter have a limited abstraction benefit in my case. Additionally, the multiplatform aspect of Flutter was not a significant advantage for Neurhome, as it is designed for a single platform.
+
+After considering these factors, I decided to rewrite Neurhome in Android Compose. Compose is a new declarative UI toolkit for Android that is built on top of Kotlin. I started, get some meaningful progress but then abandoned it.
+
+!!! 2023 Summer Sabbatical
+
+Once again unemployed, but this time decided by me and with a job already lined up for the autumn I picked up the project, and brought forward until I have been able to use it as my Home Launcher. The current list of features are
+
+* 6 habitual apps based on time
+* Quick filtering of apps using the numpad
+* Tracing of location, timestamp of application launch in a local sqlite database
+* Calendar
+* Import and export of the database, migration from the Flutter version
+* Watch that launches the alarm App
+
+[img[https://litapp-blog-images.s3.nl-ams.scw.cloud/manual/neurhome.png]]

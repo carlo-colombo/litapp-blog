@@ -1,0 +1,17 @@
+tags: 
+title: $:/config/blog/additional-links
+type: text/vnd.tiddlywiki
+
+<div>
+
+  !!! Links
+
+  <ul>
+    <li>
+      <$link to="$:/plugins/litapp/blog/templates/gallery" />
+    </li>
+    <li>
+      <a href="https://github.com/carlo-colombo">GitHub</a>
+    </li>
+  </ul>
+</div>

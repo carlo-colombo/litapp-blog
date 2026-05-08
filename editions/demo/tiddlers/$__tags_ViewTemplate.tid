@@ -1,0 +1,6 @@
+created: 20231202141447893
+list: $:/core/ui/ViewTemplate/title $:/core/ui/ViewTemplate/unfold $:/core/ui/ViewTemplate/subtitle $:/core/ui/ViewTemplate/tags $:/plugins/litapp/blog/publishButton $:/tags/ViewTemplate $:/core/ui/ViewTemplate/classic $:/core/ui/ViewTemplate/body
+modified: 20231202141632837
+tags: $:/tags/ViewTemplate
+title: $:/tags/ViewTemplate
+type: text/vnd.tiddlywiki

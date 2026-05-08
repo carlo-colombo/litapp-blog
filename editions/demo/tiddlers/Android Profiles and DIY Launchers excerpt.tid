@@ -1,0 +1,9 @@
+created: 20240114202732263
+creator: carlo
+modified: 20240114204301587
+modifier: carlo
+tags: [[Android Profiles and DIY Launchers]]
+title: Android Profiles and DIY Launchers excerpt
+type: text/vnd.tiddlywiki
+
+My current job does not provide a company phone but allows to set the company google account on the personal devices, the account does not install a separate profile, I initially just added the google work account to my phone but felt wrong. Randomly on hackernews or reddit I found out that is possible to install [[TestDPC|https://play.google.com/store/apps/details?id=com.afwsamples.testdpc&hl=it&gl=US]] that allows to separate accounts for applications, exactly as if a work profile is enforced. This is nice and good but my DIY launcher did not support work profiles, so I rolled up my sleeves and after few too many searches I was able to implement it. The following is a summary of what is needed to support work profiles in a launcher, with the hope it can helps anyone looking for similar information.

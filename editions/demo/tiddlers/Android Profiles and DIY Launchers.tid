@@ -1,0 +1,56 @@
+created: 20231231133931308
+creator: carlo
+modified: 20260504055124953
+modifier: carlo
+published: 20240114214346750
+tags: android neurhome projects
+title: Android Profiles and DIY Launchers
+type: text/vnd.tiddlywiki
+
+{{Android Profiles and DIY Launchers excerpt}}
+
+!! LauncherApps
+
+A newer approach to retrieve activities with profile support, include it in your app using `launcherApps = getSystemService(Context.LAUNCHER_APPS_SERVICE) as LauncherApps`. Check the [[documentation|https://developer.android.com/reference/android/content/pm/LauncherApps]] for more details.
+
+!! List profiles and apps for all profiles
+
+```
+launcherApps.profiles.flatMap { profile -> launcherApps.getActivityList(null, profile) }
+```
+
+!! Get a LauncherActivityInfo from a package name and user (handle)
+
+```
+val intent = packageManager.getLaunchIntentForPackage(packageName)
+val launcherActivityInfo = launcherApps.resolveActivity(intent, userHandle)
+```
+
+!! Get the icon
+
+Activities retrieved using `LauncherApps` luckily provide a way to get the //badged// icon, the application icon with a small suitcase on the side.
+
+```
+launcherActivityInfo.getBadgedIcon(0)
+```
+
+!! Launch the activity with a specific profile
+
+```
+val componentName = launcherActivityInfo.componentName
+launcherApps.startMainActivity(componentName, userHandle, null, null)
+```
+
+!! Retrieve a UserHandle based on user id
+
+On my phone the main user is `0`, and the work profile user is `10`. I did not found a way to go from the int value to UserHandle and resort to retrieving all the profiles from `LauncherApps` and keeping them around. 
+
+---
+
+Disclaimer: these are possible not the best or more efficient way to retrieve and use these information, but they seems to work and be reliable.
+
+Additional links
+
+* https://github.com/Neamar/KISS/issues/542
+* https://github.com/slvn/nome/commit/b4b03c548cd9a5e6c98062aca7b98e60cc0a873a
+* https://developer.android.com/work/managed-profiles

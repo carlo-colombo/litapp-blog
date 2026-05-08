@@ -1,0 +1,15 @@
+created: 20231222180837455
+modified: 20231222205457444
+tags: 
+title: Photos
+type: text/vnd.tiddlywiki
+
+
+
+<$list filter=[has:field[published]has:field[pixelfed]]>
+        <$set name=imgurl filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]" >
+            <img src=<<imgurl>> />
+        </$set>
+
+</$list>
+

@@ -1,0 +1,68 @@
+created: 20231117134706980
+creator: carlo
+modified: 20240126220020519
+modifier: carlo
+published: 20231223004257281
+tags: jq fzf cli exported
+title: jq fzf powered filtering
+type: text/vnd.tiddlywiki
+
+{{jq fzf powered filtering excerpt}}
+
+
+!!! Features
+
+* Supports reading from stdin (pipe or `-`) and path
+* Keeps history of selected filters and presenting them as options for fzf.
+* Prints the result of applying the filter the input  
+
+!!! The script
+
+```
+function jqz () {
+    if [[ -z $1 ]] || [[ $1 == "-" ]]; then
+        input=$(mktemp)
+        trap "rm -f '$input'" EXIT
+        cat /dev/stdin > "$input"
+    else
+        input="$1"
+    fi
+
+    local q=$(<$HOME/.jqz-history  \
+    | fzf \
+        --history=$HOME/.jqz-history \
+        --query '.' \
+        --prompt 'jq filter> ' \
+        --bind "tab:replace-query"\
+        --bind "return:print-query" \
+        --bind "alt-up:preview-page-up,alt-down:preview-page-down" \
+        --bind 'focus:transform-preview-label:echo [ {} ]' \
+        --header 'TAB: select filter' \
+        --preview "<$input | jq --color-output -r  {q}")
+
+    jq -r "$q" "$input"
+}
+
+```
+
+!!! fzf options
+
+* `--history` saves the selected filters to this file, it enable going to the previous selection with `CTRL-N` and `CTRL-P`. The history file is also used to provide options to pick from.
+* `--prompt` shows a customized prompt
+* `--bind` binds an event or a keybinding to an action, check `fzf` documentation for complete list. Here is used to scroll the preview, to update the preview title, and to select a filter.
+* `--header` text that is presented above the query
+* `--query` the default query 
+
+!!! Supporting both stdin and paths
+
+I got this part from [[Implementing a jq REPL with fzf|https://gist.github.com/reegnz/b9e40993d410b75c2d866441add2cb55]] it allows to pipe in json `{"a":42} | jqz` or to read from a file `jqz /tmp/some-file.json`
+
+```
+    if [[ -z $1 ]] || [[ $1 == "-" ]]; then
+        input=$(mktemp)
+        trap "rm -f '$input'" EXIT
+        cat /dev/stdin > "$input"
+    else
+        input="$1"
+    fi
+```

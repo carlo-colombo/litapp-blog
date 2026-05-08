@@ -1,0 +1,19 @@
+created: 20240413063425170
+modified: 20240413063935193
+tags: 
+title: $:/config/blog/additional-links
+type: text/vnd.tiddlywiki
+
+<div>
+
+  !!! Links
+
+  <ul>
+    <li>
+      <a href="/gallery.html">Gallery</a>
+    </li>
+    <li>
+      <a href="https://github.com/carlo-colombo">GitHub</a>
+    </li>
+  </ul>
+</div>
