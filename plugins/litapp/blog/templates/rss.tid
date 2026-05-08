@@ -32,7 +32,7 @@ type: text/vnd.tiddlywiki
 </$list>
 </$tiddler>
 """><$text text={{{ [<itemDescription>encodehtml[]] }}}/></$wikify>`</description>
-      <pubDate>`<$view tiddler=<<t>> field="published" format="date" template="[UTC]ddd, 0DD MMM YYYY 0hh:0mm:0ss"/>` GMT</pubDate>
+      <pubDate>`<$view tiddler=<<t>> field="published" format="date" template="[UTC]ddd, 0DD mmm YYYY 0hh:0mm:0ss"/>` GMT</pubDate>
       <link>`<$text text={{{ [<t>encodeuricomponent[]addsuffix[.html]addprefix<siteUrl>trim[]] }}}/>`</link>
       <guid isPermaLink="true">`<$text text={{{ [<t>encodeuricomponent[]addsuffix[.html]addprefix<siteUrl>trim[]] }}}/>`</guid>
     </item>

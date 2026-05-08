@@ -64,5 +64,17 @@ test("RSS generation", async (t) => {
 
     const specialItem = findItemByTitle('Test <Tag> & "Quote"');
     assert.ok(specialItem, "rss.xml does not contain 'Test <Tag> & \"Quote\"'");
+
+    // 3. Validate pubDate format (RFC-822)
+    // Example: Sat, 28 Mar 2026 23:57:54 GMT
+    // We check for: DayName, Day MonthName Year Time Zone
+    // MonthName must be 3 characters.
+    const rfc822Regex = /^[A-Z][a-z]{2}, \d{2} [A-Z][a-z]{2} \d{4} \d{2}:\d{2}:\d{2} GMT$/;
+    items.forEach((item) => {
+      assert.ok(
+        rfc822Regex.test(item.pubDate),
+        `pubDate "${item.pubDate}" in item "${item.title}" does not match RFC-822 format (expected: Sat, 28 Mar 2026 23:57:54 GMT)`,
+      );
+    });
   });
 });
