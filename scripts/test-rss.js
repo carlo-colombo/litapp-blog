@@ -58,7 +58,7 @@ test("RSS generation", async (t) => {
     assert.ok(ampItem, "rss.xml does not contain 'Test & Ampersand'");
     assert.strictEqual(
       ampItem.description,
-      "This is a test post with & in title and description.",
+      "<p><p>Content of the test post.\n</p></p>",
       `Description mismatch for 'Test & Ampersand': ${ampItem.description}`,
     );
 

@@ -15,7 +15,23 @@ type: text/vnd.tiddlywiki
 `<$list filter={{$:/config/feeds/filter}} variable="t">
 `    <item>
       <title>`<$text text={{{ [<t>get[title]trim[]encodehtml[]] }}}/>`</title>
-      <description>`<$text text={{{ [<t>get[description]trim[]encodehtml[]] }}}/>`</description>
+      <description>`<$wikify name="itemDescription" output="html" text="""
+\whitespace trim
+<$tiddler tiddler=<<t>>>
+<$list filter="[<t>has:field[pixelfed]]" variable="ignore">
+  <$set name=imgurl filter="[<t>get:field[thumbnail]] :else[<t>get:field[image]]">
+    <img src=<<imgurl>> alt={{!!title}} />
+  </$set>
+  <br/>
+  <$transclude field="description" mode="block">
+    <$transclude field="text" mode="block"/>
+  </$transclude>
+</$list>
+<$list filter="[<t>!has:field[pixelfed]]" variable="ignore">
+  <$transclude field="text" mode="block"/>
+</$list>
+</$tiddler>
+"""><$text text={{{ [<itemDescription>encodehtml[]] }}}/></$wikify>`</description>
       <pubDate>`<$view tiddler=<<t>> field="published" format="date" template="[UTC]ddd, 0DD MMM YYYY 0hh:0mm:0ss"/>` GMT</pubDate>
       <link>`<$text text={{{ [<t>encodeuricomponent[]addsuffix[.html]addprefix<siteUrl>trim[]] }}}/>`</link>
       <guid isPermaLink="true">`<$text text={{{ [<t>encodeuricomponent[]addsuffix[.html]addprefix<siteUrl>trim[]] }}}/>`</guid>
