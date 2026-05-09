@@ -72,7 +72,7 @@ type: text/vnd.tiddlywiki
         </ul>
       </div>
       <div>
-        © `<<now "YYYY">>` {{$:/config/blog/author}}
+        © `<<now "YYYY">> <$view tiddler="$:/config/blog/author" />`
       </div>
       <div>
         Built with <a href="https://github.com/carlo-colombo/litapp-blog">litapp-blog</a> `{{$:/plugins/litapp/blog!!version}}`

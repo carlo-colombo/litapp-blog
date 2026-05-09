@@ -13,6 +13,7 @@ function normalize(html) {
   return html
     .replace(/Generated \d{4}-\d{2}-\d{2} \d{2}:\d{2} UTC/g, "Generated [TIMESTAMP] UTC")
     .replace(/© \d{4}/g, "© [YEAR]")
+    .replace(/© \[YEAR\] .+/g, "© [YEAR] [AUTHOR]")
     .replace(/litapp-blog \d+\.\d+\.\d+/g, "litapp-blog [VERSION]");
 }
 
