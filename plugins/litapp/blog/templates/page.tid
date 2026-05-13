@@ -22,6 +22,11 @@ type: text/vnd.tiddlywiki
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="mobile-web-app-capable" content="yes"/>
     <meta name="format-detection" content="telephone=no">
+`<$wikify name="wikifiedDescription" output="text" text={{{ [<currentTiddler>match[$:/plugins/litapp/blog/templates/home]then{$:/config/blog/subtitle}] ~[<currentTiddler>has[pixelfed]get[title]] ~[<currentTiddler>get[description]] ~[tag<currentTiddler>!title<currentTiddler>limit[1]get[text]] ~[<currentTiddler>!prefix[$:/]get[text]splitregexp[\s+]limit[20]join[ ]] }}}>
+<$vars finalDescription={{{ [<wikifiedDescription>trim[]!match[]] ~[<currentTiddler>get[title]] ~[{$:/config/blog/subtitle}] }}}>
+`<meta name="description" content="`<<finalDescription>>`" />
+`</$vars>
+</$wikify>`
     <link
       href="`<<datauri "$:/plugins/litapp/blog/favicon">>`"
       rel="icon" type="image/x-icon" id="faviconLink"
