@@ -1,4 +1,4 @@
 title: $:/config/feeds/filter
 type: text/vnd.tiddlywiki
 
-[has:field[published]!sort[published]limit[20]]
+[has:field[published]!sort[published]limit[30]]
