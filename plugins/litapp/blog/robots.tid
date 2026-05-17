@@ -1,0 +1,17 @@
+title: $:/plugins/litapp/blog/robots
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+<$wikify name="siteUrl" text={{$:/config/blog/SiteBaseUrl}} output="text">
+<$vars siteUrl={{{ [<siteUrl>trim[]removesuffix[/]] }}}>
+<$list filter="[{$:/config/blog/robots.txt}!is[blank]]" variable="ignore">
+<$text text={{$:/config/blog/robots.txt}}/>
+</$list>
+<$list filter="[{$:/config/blog/robots.txt}is[blank]]" variable="ignore">
+User-agent: *
+Allow: /
+
+Sitemap: <$text text=<<siteUrl>>/>/sitemap.xml
+</$list>
+</$vars>
+</$wikify>

@@ -42,3 +42,8 @@ $:/plugins/litapp/blog/templates/rss
 static/sitemap.xml
 text/plain
 $:/plugins/litapp/blog/sitemap
+--render
+[[$:/plugins/litapp/blog/robots]]
+static/robots.txt
+text/plain
+$:/plugins/litapp/blog/robots
