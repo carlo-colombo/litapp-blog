@@ -33,6 +33,11 @@ static/gallery.html
 text/plain
 $:/plugins/litapp/blog/templates/page
 --render
+$:/plugins/litapp/blog/templates/404
+static/404.html
+text/plain
+$:/plugins/litapp/blog/templates/page
+--render
 [[$:/plugins/litapp/blog/templates/rss]]
 static/rss.xml
 text/plain

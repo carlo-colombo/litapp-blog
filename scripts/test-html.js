@@ -28,6 +28,7 @@ test("HTML generation snapshots", async (t) => {
     { name: "gallery", path: "gallery.html" },
     { name: "post", path: "Test Post 1.html" },
     { name: "photo", path: "Laghetto Villa Reale, Monza #duck #microfourthirds #monza #gloomy #lake #foggymorning.html" },
+    { name: "404", path: "404.html" },
   ];
 
   for (const page of pages) {
@@ -35,7 +36,13 @@ test("HTML generation snapshots", async (t) => {
       const filePath = path.join(staticDir, page.path);
       assert.ok(fs.existsSync(filePath), `${page.path} should exist at ${filePath}`);
       const content = fs.readFileSync(filePath, "utf-8");
-      t.assert.snapshot(normalize(content));
+      if (page.name === "404") {
+        assert.ok(content.includes("404 - Page Not Found"), "404 page should have correct title");
+        assert.ok(content.includes("Explore by Tags"), "404 page should have tag cloud");
+        // We don't snapshot 404 because it's random
+      } else {
+        t.assert.snapshot(normalize(content));
+      }
     });
   }
 });

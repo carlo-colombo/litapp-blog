@@ -1,0 +1,55 @@
+caption: 404
+title: $:/plugins/litapp/blog/templates/404
+type: text/vnd.tiddlywiki
+
+\define render-photo()
+<div class="gallery-item">
+  <$link>
+    <$set name=imgurl filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]">
+      <img src=<<imgurl>> alt={{!!title}} />
+    </$set>
+  </$link>
+</div>
+\end
+
+\define render-article()
+<div class="article-item">
+  <span class="article-date"><$view field="published" format="date" template="YYYY-MM-DD"/></span>
+  <$link class="article-title"><$view field="title"/></$link>
+  <$list filter="[tag<currentTiddler>] -[<currentTiddler>]" variable="excerpt-tiddler">
+    <div class="article-excerpt"><$transclude tiddler=<<excerpt-tiddler>> /></div>
+  </$list>
+</div>
+\end
+
+<section class="error-404">
+  <h1 class="page-title">404 - Page Not Found</h1>
+  <p>Oops! The page you're looking for doesn't exist. Maybe you'll find something interesting below?</p>
+
+  <div class="grid-404">
+    <div class="column-404">
+      <$list filter="[has:field[pixelfed]has:field[published]sample[1]]"><<render-photo>></$list>
+      <$list filter="[has:field[published]!has:field[pixelfed]sample[1]]"><<render-article>></$list>
+      <$list filter="[has:field[pixelfed]has:field[published]sample[1]]"><<render-photo>></$list>
+    </div>
+    <div class="column-404">
+      <$list filter="[has:field[pixelfed]has:field[published]sample[1]]"><<render-photo>></$list>
+      <$list filter="[has:field[published]!has:field[pixelfed]sample[1]]"><<render-article>></$list>
+      <$list filter="[has:field[pixelfed]has:field[published]sample[1]]"><<render-photo>></$list>
+    </div>
+    <div class="column-404">
+      <$list filter="[has:field[pixelfed]has:field[published]sample[1]]"><<render-photo>></$list>
+      <$list filter="[has:field[published]!has:field[pixelfed]sample[1]]"><<render-article>></$list>
+      <$list filter="[has:field[pixelfed]has:field[published]sample[1]]"><<render-photo>></$list>
+    </div>
+  </div>
+
+  <h2 class="section-title">Explore by Tags</h2>
+  <div class="article-tags">
+    <$list filter="[has:field[published]!has:field[pixelfed]tags[]!prefix[pf:]sort[title]]">
+      <a href={{{ [<currentTiddler>addprefix[/tags/]addsuffix[.html]] }}} class="tag">
+        #<$view field="title"/> [<$count filter="[has:field[published]!has:field[pixelfed]tag<currentTiddler>]"/>]
+      </a>
+    </$list>
+  </div>
+</section>
