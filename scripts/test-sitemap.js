@@ -25,12 +25,16 @@ test("Sitemap generation", async (t) => {
     // yarn build-blog cleans the output dir, which might cause issues if run in parallel.
     // For now, let's just ensure it exists, or run it.
     if (!fs.existsSync(sitemapPath)) {
-        execSync("yarn build-blog", { stdio: "inherit", cwd: rootDir });
+      execSync("yarn build-blog", { stdio: "inherit", cwd: rootDir });
     }
   });
 
   await t.test("Verify sitemap.xml existence and content", () => {
-    assert.strictEqual(fs.existsSync(sitemapPath), true, "sitemap.xml does not exist");
+    assert.strictEqual(
+      fs.existsSync(sitemapPath),
+      true,
+      "sitemap.xml does not exist",
+    );
     const content = fs.readFileSync(sitemapPath, "utf-8");
     assert.notStrictEqual(content.length, 0, "sitemap.xml is empty");
 
@@ -52,18 +56,33 @@ test("Sitemap generation", async (t) => {
 
     const urlset = jObj.urlset;
     assert.ok(urlset, "sitemap.xml is missing <urlset> tag");
-    assert.strictEqual(urlset["@_xmlns"], "http://www.sitemaps.org/schemas/sitemap/0.9");
+    assert.strictEqual(
+      urlset["@_xmlns"],
+      "http://www.sitemaps.org/schemas/sitemap/0.9",
+    );
 
     const urls = Array.isArray(urlset.url) ? urlset.url : [urlset.url];
-    const locs = urls.map(u => u.loc);
+    const locs = urls.map((u) => u.loc);
 
     // Check for some expected URLs (based on demo edition)
     // We need to know the SiteBaseUrl. In demo it might be empty or something specific.
     // Let's check config.tid or similar.
-    
-    assert.ok(locs.some(l => l.endsWith("/")), "Missing root URL");
-    assert.ok(locs.some(l => l.endsWith("/articles.html")), "Missing articles.html");
-    assert.ok(locs.some(l => l.endsWith("/gallery.html")), "Missing gallery.html");
-    assert.ok(locs.some(l => l.endsWith("/Test%20Post%201.html")), "Missing Test Post 1.html");
+
+    assert.ok(
+      locs.some((l) => l.endsWith("/")),
+      "Missing root URL",
+    );
+    assert.ok(
+      locs.some((l) => l.endsWith("/articles.html")),
+      "Missing articles.html",
+    );
+    assert.ok(
+      locs.some((l) => l.endsWith("/gallery.html")),
+      "Missing gallery.html",
+    );
+    assert.ok(
+      locs.some((l) => l.endsWith("/Test%20Post%201.html")),
+      "Missing Test Post 1.html",
+    );
   });
 });

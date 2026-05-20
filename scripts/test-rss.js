@@ -52,7 +52,10 @@ test("RSS generation", async (t) => {
     const items = Array.isArray(channel.item) ? channel.item : [channel.item];
     const findItemByTitle = (title) => items.find((i) => i.title === title);
 
-    assert.ok(findItemByTitle("Test Post 1"), "rss.xml does not contain Test Post 1");
+    assert.ok(
+      findItemByTitle("Test Post 1"),
+      "rss.xml does not contain Test Post 1",
+    );
 
     const ampItem = findItemByTitle("Test & Ampersand");
     assert.ok(ampItem, "rss.xml does not contain 'Test & Ampersand'");
@@ -69,7 +72,8 @@ test("RSS generation", async (t) => {
     // Example: Sat, 28 Mar 2026 23:57:54 GMT
     // We check for: DayName, Day MonthName Year Time Zone
     // MonthName must be 3 characters.
-    const rfc822Regex = /^[A-Z][a-z]{2}, \d{2} [A-Z][a-z]{2} \d{4} \d{2}:\d{2}:\d{2} GMT$/;
+    const rfc822Regex =
+      /^[A-Z][a-z]{2}, \d{2} [A-Z][a-z]{2} \d{4} \d{2}:\d{2}:\d{2} GMT$/;
     items.forEach((item) => {
       assert.ok(
         rfc822Regex.test(item.pubDate),

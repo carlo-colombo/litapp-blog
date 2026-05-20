@@ -23,7 +23,11 @@ test("Robots.txt generation", async (t) => {
   });
 
   await t.test("Verify robots.txt existence and content", () => {
-    assert.strictEqual(fs.existsSync(robotsPath), true, "robots.txt does not exist");
+    assert.strictEqual(
+      fs.existsSync(robotsPath),
+      true,
+      "robots.txt does not exist",
+    );
     const content = fs.readFileSync(robotsPath, "utf-8");
     assert.notStrictEqual(content.length, 0, "robots.txt is empty");
 
