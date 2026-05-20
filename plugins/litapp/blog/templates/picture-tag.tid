@@ -1,0 +1,16 @@
+title: $:/plugins/litapp/blog/templates/picture-tag
+type: text/vnd.tiddlywiki
+
+<h1 class="page-title">Gallery Tag: <$text text={{{ [<currentTiddler>removeprefix[pf:]] }}} /></h1>
+
+<div class="gallery-grid">
+  <$list filter="[tag<currentTiddler>has:field[pixelfed]has:field[published]!sort[published]]">
+    <div class="gallery-item">
+      <$link>
+        <$set name=imgurl filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]">
+          <img src=<<imgurl>> alt={{!!title}} />
+        </$set>
+      </$link>
+    </div>
+  </$list>
+</div>

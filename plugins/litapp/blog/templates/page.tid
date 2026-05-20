@@ -23,12 +23,14 @@ type: text/vnd.tiddlywiki
     <meta name="mobile-web-app-capable" content="yes"/>
     <meta name="format-detection" content="telephone=no">
 `<$set name="articleTitles" value={{{ [tag<currentTiddler>has:field[published]!sort[published]get[title]join[, ]] }}}>
-<$set name="tagDescription" value={{{ [<contentTemplate>match[$:/plugins/litapp/blog/templates/tag]then[Tag page for ']addsuffix<currentTiddler>addsuffix[': ]addsuffix<articleTitles>] }}}>
+<$set name="cleanTag" value={{{ [<currentTiddler>removeprefix[pf:]] :else[<currentTiddler>] }}}>
+<$set name="tagDescription" value={{{ [<contentTemplate>match[$:/plugins/litapp/blog/templates/tag]then[Tag page for ']addsuffix<cleanTag>addsuffix[': ]addsuffix<articleTitles>] [<contentTemplate>match[$:/plugins/litapp/blog/templates/picture-tag]then[Gallery tag page for ']addsuffix<cleanTag>addsuffix[': ]addsuffix<articleTitles>] +[join[]] }}}>
 <$wikify name="wikifiedDescription" output="text" text={{{ [<tagDescription>!match[]] ~[<currentTiddler>match[$:/plugins/litapp/blog/templates/home]then{$:/config/blog/subtitle}] ~[<currentTiddler>has[pixelfed]get[title]] ~[<currentTiddler>get[description]] ~[tag<currentTiddler>!title<currentTiddler>limit[1]get[text]] ~[<currentTiddler>!prefix[$:/]get[text]splitregexp[\s+]limit[20]join[ ]] }}}>
 <$vars finalDescription={{{ [<wikifiedDescription>trim[]!match[]] ~[<currentTiddler>get[title]] ~[{$:/config/blog/subtitle}] }}}>
 `<meta name="description" content="`<<finalDescription>>`" />
 `</$vars>
 </$wikify>
+</$set>
 </$set>
 </$set>`
     <link
@@ -38,7 +40,7 @@ type: text/vnd.tiddlywiki
     <link rel="stylesheet" href="/static.css">
     <link rel="alternate" type="application/rss+xml" title="`{{$:/config/feeds/title}}`" href="/rss.xml" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-    <title>`{{$:/config/blog/title}} - <$view field="caption"><$view field="title"/></$view>`</title>
+    <title>`{{$:/config/blog/title}} - <$set name="cleanTitle" filter="[<currentTiddler>removeprefix[pf:]] :else[<currentTiddler>]"><$view field="caption"><$text text=<<cleanTitle>>/></$view></$set>`</title>
     `<$list filter="[{$:/config/blog/environment}match[dev]]">`
         <script>
             new EventSource('/blog-build').addEventListener('change', (e) => location.reload())

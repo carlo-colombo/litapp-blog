@@ -46,7 +46,7 @@ type: text/vnd.tiddlywiki
 
   <h2 class="section-title">Explore by Tags</h2>
   <div class="article-tags">
-    <$list filter="[has:field[published]!has:field[pixelfed]tags[]!prefix[pf:]sort[title]]">
+    <$list filter="[has:field[published]!has:field[pixelfed]tags[]!prefix[pf:]sort[title]]:sort:number:reverse[tagging[]has:field[published]!has:field[pixelfed]count[]]">
       <a href={{{ [<currentTiddler>addprefix[/tags/]addsuffix[.html]] }}} class="tag">
         #<$view field="title"/> [<$count filter="[has:field[published]!has:field[pixelfed]tag<currentTiddler>]"/>]
       </a>

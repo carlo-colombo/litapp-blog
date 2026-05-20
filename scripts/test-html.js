@@ -28,6 +28,7 @@ test("HTML generation snapshots", async (t) => {
     { name: "gallery", path: "gallery.html" },
     { name: "post", path: "Test Post 1.html" },
     { name: "photo", path: "Laghetto Villa Reale, Monza #duck #microfourthirds #monza #gloomy #lake #foggymorning.html" },
+    { name: "picture-tag", path: "picture-tag/cross.html" },
     { name: "404", path: "404.html" },
   ];
 

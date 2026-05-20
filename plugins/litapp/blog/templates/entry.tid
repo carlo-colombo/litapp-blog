@@ -27,6 +27,9 @@ type: text/vnd.tiddlywiki
       <$list filter="[is[current]tags[]!prefix[pf:]]">
         <a href={{{ [<currentTiddler>addprefix[/tags/]addsuffix[.html]] }}} class="tag">#<$view field="title"/></a>
       </$list>
+      <$list filter="[is[current]tags[]prefix[pf:]]">
+        <a href={{{ [<currentTiddler>removeprefix[pf:]addprefix[/picture-tag/]addsuffix[.html]] }}} class="tag">#<$text text={{{ [<currentTiddler>removeprefix[pf:]] }}} /></a>
+      </$list>
     </div>
   </footer>
 </article>
