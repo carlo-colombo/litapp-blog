@@ -23,7 +23,7 @@ type: text/vnd.tiddlywiki
     </div>
   </div>
 
-  <div class="photos-column">
+  <div class="photos-column" id="gallery">
     <h2 class="section-title">Latest Photos</h2>
     <div class="gallery-grid">
       <$list filter="[has:field[pixelfed]has:field[published]!sort[published]limit[8]]">
