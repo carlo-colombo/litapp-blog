@@ -4,7 +4,7 @@ type: text/vnd.tiddlywiki
 
 <h1 class="page-title">Gallery</h1>
 
-<div class="gallery-grid">
+<div class="gallery-grid" id="gallery">
   <$list filter="[has:field[pixelfed]has:field[published]!sort[published]]">
     <div class="gallery-item">
       <$link>

@@ -3,7 +3,7 @@ type: text/vnd.tiddlywiki
 
 <h1 class="page-title">Gallery Tag: <$text text={{{ [<currentTiddler>removeprefix[pf:]] }}} /></h1>
 
-<div class="gallery-grid">
+<div class="gallery-grid" id="gallery">
   <$list filter="[tag<currentTiddler>has:field[pixelfed]has:field[published]!sort[published]]">
     <div class="gallery-item">
       <$link>

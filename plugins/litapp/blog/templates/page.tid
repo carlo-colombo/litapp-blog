@@ -61,6 +61,15 @@ type: text/vnd.tiddlywiki
          </ul>
        </nav>
     </header>
+    `<$list filter="[has:field[pixelfed]has:field[published]sample[1]]">`
+      <div class="mobile-gallery-slice">
+        <a href="#gallery">
+          `<$set name="imgurl" filter="[all[current]get[image]] :else[all[current]get[thumbnail]]">`
+            <img src="`<<imgurl>>`" alt="`{{!!title}}`" />
+          `</$set>`
+        </a>
+      </div>
+    `</$list>`
     <main>
          `<$view tiddler=<<contentTemplate>> format="htmlwikified"/>`
     </main>
