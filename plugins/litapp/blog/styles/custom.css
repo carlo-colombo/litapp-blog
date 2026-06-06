@@ -412,6 +412,26 @@ blockquote {
     flex-direction: column;
     gap: 1rem;
   }
+
+  main {
+    padding: 1rem 0.5rem;
+  }
+
+  .entry-header {
+    margin-bottom: 1rem;
+  }
+
+  .entry-footer {
+    margin-top: 1rem;
+  }
+
+  article.entry img,
+  article.entry video,
+  article.entry iframe,
+  article.entry embed,
+  article.entry object {
+    margin: 0.5rem 0;
+  }
 }
 
 /* 404 Page Styles */
