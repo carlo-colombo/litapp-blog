@@ -2,25 +2,34 @@ title: $:/plugins/litapp/blog/templates/entry
 type: text/vnd.tiddlywiki
 
 <article class="entry">
-  <header class="entry-header">
-    <h1 class="entry-title"><$view field="title"/></h1>
-    <div class="entry-meta">
-      <span class="entry-date"><$view field="published" format="date" template="DD MMM YYYY"/></span>
-      <$list filter="[is[current]has:field[pixelfed]]">
-        • <a href={{!!pixelfed}} target="_blank">View on Pixelfed</a>
-      </$list>
-    </div>
-  </header>
+  <$list filter="[is[current]!has:field[pixelfed]]">
+    <header class="entry-header">
+      <h1 class="entry-title"><$view field="title"/></h1>
+      <div class="entry-meta">
+        <span class="entry-date"><$view field="published" format="date" template="DD MMM YYYY"/></span>
+      </div>
+    </header>
 
-  <div class="entry-content">
-    <$list filter="[is[current]has:field[pixelfed]]">
-        <img src={{!!image}} class="full-image" />
-        <p>{{!!description}}</p>
-    </$list>
-    <$list filter="[is[current]!has:field[pixelfed]]">
-        <$transclude mode="block"/>
-    </$list>
-  </div>
+    <div class="entry-content">
+      <$transclude mode="block"/>
+    </div>
+  </$list>
+
+  <$list filter="[is[current]has:field[pixelfed]]">
+    <div class="entry-content">
+      <img src={{!!image}} class="full-image" />
+
+      <header class="entry-header">
+        <h1 class="entry-title"><$view field="title"/></h1>
+        <div class="entry-meta">
+          <span class="entry-date"><$view field="published" format="date" template="DD MMM YYYY"/></span>
+          • <a href={{!!pixelfed}} target="_blank">View on Pixelfed</a>
+        </div>
+      </header>
+
+      <p>{{!!description}}</p>
+    </div>
+  </$list>
 
   <footer class="entry-footer">
     <div class="entry-tags">
