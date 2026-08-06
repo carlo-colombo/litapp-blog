@@ -17,7 +17,7 @@ type: text/vnd.tiddlywiki
   <div class="entry-content">
     <$list filter="[is[current]has:field[pixelfed]]">
         <img src={{!!image}} class="full-image" />
-        <h1 class="entry-description"><$view field="description"/></h1>
+        <h1 class="entry-description">{{!!description}}</h1>
     </$list>
     <$list filter="[is[current]!has:field[pixelfed]]">
         <$transclude mode="block"/>
