@@ -21,7 +21,8 @@ function normalize(html) {
     .replace(
       /\s*<div class="mobile-gallery-slice">[\s\S]*?<\/div>\s*/g,
       '<div class="mobile-gallery-slice">[RANDOM IMAGE SLICE]</div>',
-    );
+    )
+    .replace(/data:[^"]{200,}/g, "data:[DATA URI]");
 }
 
 test("HTML generation snapshots", async (t) => {
