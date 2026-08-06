@@ -3,7 +3,9 @@ type: text/vnd.tiddlywiki
 
 <article class="entry">
   <header class="entry-header">
-    <h1 class="entry-title"><$view field="title"/></h1>
+    <$list filter="[is[current]!has:field[pixelfed]]">
+      <h1 class="entry-title"><$view field="title"/></h1>
+    </$list>
     <div class="entry-meta">
       <span class="entry-date"><$view field="published" format="date" template="DD MMM YYYY"/></span>
       <$list filter="[is[current]has:field[pixelfed]]">
