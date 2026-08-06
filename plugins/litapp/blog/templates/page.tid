@@ -61,15 +61,19 @@ type: text/vnd.tiddlywiki
          </ul>
        </nav>
     </header>
+    `<$set name="pageTiddler" value={{{ [<currentTiddler>] }}}>`
     `<$list filter="[has:field[pixelfed]has:field[published]sample[1]]">`
       <div class="mobile-gallery-slice">
-        <a href="#gallery">
-          `<$set name="imgurl" filter="[all[current]get[image]] :else[all[current]get[thumbnail]]">`
-            <img src="`<<imgurl>>`" alt="`{{!!title}}`" />
+        `<$set name="imgurl" filter="[all[current]get[image]] :else[all[current]get[thumbnail]]">`
+          `<$set name="sliceHref" filter="[<pageTiddler>match[$:/plugins/litapp/blog/templates/home]then[#gallery]] :else[<currentTiddler>encodeuricomponent[]addprefix[/]addsuffix[.html]]">`
+            <a href="`<<sliceHref>>`">
+              <img src="`<<imgurl>>`" alt="`{{!!title}}`" />
+            </a>
           `</$set>`
-        </a>
+        `</$set>`
       </div>
     `</$list>`
+    `</$set>`
     <main>
          `<$view tiddler=<<contentTemplate>> format="htmlwikified"/>`
     </main>

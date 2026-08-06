@@ -19,7 +19,7 @@ function normalize(html) {
     .replace(/© \[YEAR\] .+/g, "© [YEAR] [AUTHOR]")
     .replace(/litapp-blog \d+\.\d+\.\d+/g, "litapp-blog [VERSION]")
     .replace(
-      /<div class="mobile-gallery-slice">[\s\S]*?<\/div>/g,
+      /\s*<div class="mobile-gallery-slice">[\s\S]*?<\/div>\s*/g,
       '<div class="mobile-gallery-slice">[RANDOM IMAGE SLICE]</div>',
     );
 }
