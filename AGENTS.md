@@ -28,7 +28,7 @@ yarn install
 yarn dev
 ```
 
-`yarn dev` starts TiddlyWiki and the static preview. The wiki normally listens on port `8080`; the static preview is served on `http://localhost:9021`. The watcher observes `plugins` and `editions`, rebuilds after changes, and sends reload notifications through `/blog-build`.
+`yarn dev` starts TiddlyWiki and the static preview. The wiki normally listens on port `8080`; the static preview is served on `http://localhost:9021`. The watcher observes `plugins` and `editions`, rebuilds after changes, and sends reload notifications through `/blog-build`. The live-reload script is enabled when `$:/config/blog/environment` is set to `dev`.
 
 Stop the development process with `Ctrl-C`. Do not start a second process on port `9021` while screenshot tooling or another preview is running.
 
@@ -94,7 +94,7 @@ Do not update snapshots merely to make a failing test pass. Check all changed sn
 
 ## TiddlyWiki and tiddler style
 
-Templates are `.tid` files with `type: text/vnd.tiddlywiki`. Keep filter syntax valid and simple; malformed filters can fail the whole static build with opaque errors.
+Templates are `.tid` files with `type: text/vnd.tiddlywiki`. Keep filter syntax valid and simple; malformed filters can fail the whole static build with opaque `Missing [ in filter expression` errors. Keep collection discovery filters simple and test them incrementally; `[tag[collection]]` reliably discovers collection definitions.
 
 Use `<$transclude mode="block" />` for the current tiddler body. When a list changes rendering context, explicitly pass the item tiddler. Use `<$text>` for transformed variables. For display titles, preserve the established `caption` fallback behavior where applicable.
 
@@ -104,7 +104,9 @@ Published content generally uses a `published` field. Preserve existing tags, fi
 
 ## CSS and assets
 
-Add site-specific styles to `plugins/litapp/blog/styles/custom.css`; keep the CSS bundle configuration in `styles/index.css.tid`. Follow the existing responsive, mobile-first gallery/grid conventions. Avoid editing generated CSS or HTML in `editions/demo/output/`.
+The site uses project-specific CSS in `plugins/litapp/blog/styles/custom.css`, bundled through `styles/index.css.tid`. Follow the existing responsive, mobile-first gallery/grid conventions. Avoid editing generated CSS or HTML in `editions/demo/output/`.
+
+Images and other static assets, including the favicon, are managed in the TiddlyWiki plugin or edition and exported during the build. Do not manually patch generated asset files.
 
 ## Collections
 
