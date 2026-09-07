@@ -30,7 +30,7 @@ type: text/vnd.tiddlywiki
         <div class="gallery-item">
           <$link>
             <$set name=imgurl filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]">
-              <img src=<<imgurl>> alt={{!!title}} />
+              <img src=<<imgurl>> alt={{!!title}} loading="lazy" />
             </$set>
           </$link>
         </div>
