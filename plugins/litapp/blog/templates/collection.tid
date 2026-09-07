@@ -1,0 +1,24 @@
+title: $:/plugins/litapp/blog/templates/collection
+type: text/vnd.tiddlywiki
+
+<article class="collection-page">
+  <header class="entry-header">
+    <h1 class="entry-title">Collection: <$text text={{{ [<currentTiddler>removeprefix[pf:]] }}} /></h1>
+  </header>
+
+  <div class="collection-description">
+    <$transclude tiddler=<<currentTiddler>> mode="block" />
+  </div>
+
+  <div class="gallery-grid collection-gallery" id="gallery">
+    <$list filter="[tag<currentTiddler>has:field[pixelfed]has:field[published]!sort[published]]">
+      <div class="gallery-item">
+        <$link>
+          <$set name="imgurl" filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]">
+            <img src=<<imgurl>> alt={{!!title}} />
+          </$set>
+        </$link>
+      </div>
+    </$list>
+  </div>
+</article>

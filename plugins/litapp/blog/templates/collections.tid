@@ -1,0 +1,33 @@
+caption: Collections
+title: $:/plugins/litapp/blog/templates/collections
+type: text/vnd.tiddlywiki
+
+<article class="collections-page">
+  <header class="entry-header">
+    <h1 class="entry-title">Collections</h1>
+  </header>
+
+  <div class="collections-list">
+    <$list filter="[tag[collection]]" variable="item">
+      <section class="collection-summary">
+        <$set name="collectionName" filter="[<item>get[title]removeprefix[pf:]]">
+          <$set name="collectionHref" filter="[<collectionName>encodeuricomponent[]addprefix[/collections/]addsuffix[.html]]">
+            <h2><a href=<<collectionHref>>><$text text=<<collectionName>> /></a></h2>
+          </$set>
+        </$set>
+        <div class="collection-summary-content"><$transclude tiddler=<<item>> mode="block" /></div>
+        <div class="collection-thumbnail-grid">
+          <$list filter="[tag<item>has:field[pixelfed]has:field[published]!sort[published]]">
+            <div class="collection-thumbnail">
+              <$link>
+                <$set name="thumbnailUrl" filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]">
+                  <img src=<<thumbnailUrl>> alt={{!!title}} loading="lazy" />
+                </$set>
+              </$link>
+            </div>
+          </$list>
+        </div>
+      </section>
+    </$list>
+  </div>
+</article>

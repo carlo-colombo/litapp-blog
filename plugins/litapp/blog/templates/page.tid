@@ -24,7 +24,7 @@ type: text/vnd.tiddlywiki
     <meta name="format-detection" content="telephone=no">
 `<$set name="articleTitles" value={{{ [tag<currentTiddler>has:field[published]!sort[published]get[title]join[, ]] }}}>
 <$set name="cleanTag" value={{{ [<currentTiddler>removeprefix[pf:]] :else[<currentTiddler>] }}}>
-<$set name="tagDescription" value={{{ [<contentTemplate>match[$:/plugins/litapp/blog/templates/tag]then[Tag page for ']addsuffix<cleanTag>addsuffix[': ]addsuffix<articleTitles>] [<contentTemplate>match[$:/plugins/litapp/blog/templates/picture-tag]then[Gallery tag page for ']addsuffix<cleanTag>addsuffix[': ]addsuffix<articleTitles>] +[join[]] }}}>
+<$set name="tagDescription" value={{{ [<contentTemplate>match[$:/plugins/litapp/blog/templates/tag]then[Tag page for ']addsuffix<cleanTag>addsuffix[': ]addsuffix<articleTitles>] [<contentTemplate>match[$:/plugins/litapp/blog/templates/picture-tag]then[Gallery tag page for ']addsuffix<cleanTag>addsuffix[': ]addsuffix<articleTitles>] [<contentTemplate>match[$:/plugins/litapp/blog/templates/collection]then[Collection ']addsuffix<cleanTag>addsuffix[': ]addsuffix<articleTitles>] +[join[]] }}}>
 <$wikify name="wikifiedDescription" output="text" text={{{ [<tagDescription>!match[]] ~[<currentTiddler>match[$:/plugins/litapp/blog/templates/home]then{$:/config/blog/subtitle}] ~[<currentTiddler>has[pixelfed]get[title]] ~[<currentTiddler>get[description]] ~[tag<currentTiddler>!title<currentTiddler>limit[1]get[text]] ~[<currentTiddler>!prefix[$:/]get[text]splitregexp[\s+]limit[20]join[ ]] }}}>
 <$vars finalDescription={{{ [<wikifiedDescription>trim[]!match[]] ~[<currentTiddler>get[title]] ~[{$:/config/blog/subtitle}] }}}>
 `<meta name="description" content="`<<finalDescription>>`" />
@@ -57,6 +57,9 @@ type: text/vnd.tiddlywiki
          <ul>
            <li><a href="/articles.html">Articles</a></li>
            <li><a href="/gallery.html">Gallery</a></li>
+`<$list filter="[tag[collection]prefix[pf:]limit[1]]">`
+           <li><a href="/collections.html">Collections</a></li>
+`</$list>`
            <li><a href="/rss.xml">RSS</a></li>
          </ul>
        </nav>
