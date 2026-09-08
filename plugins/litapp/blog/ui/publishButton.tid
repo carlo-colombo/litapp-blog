@@ -4,7 +4,7 @@ list-after: $:/core/ui/ViewTemplate/tags
 type: text/vnd.tiddlywiki
 
 <$fieldmangler>
-<$list filter="[is[current]tag[blog candidate]]" >
+<$list filter="[is[current]tag[blog candidate]!is[draft]]" >
   <$button>
     <$action-setfield published=<<now "YYYY0MM0DD0hh0mm0ssXXX">> />
     <$action-sendmessage $message="tm-remove-tag" $param="blog candidate"/>
