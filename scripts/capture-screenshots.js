@@ -71,12 +71,12 @@ const server = app.listen(9021, async () => {
     { name: "mobile", ...devices["iPhone 13"] },
   ];
 
-  let summaryMarkdown = "## PR Screenshots\n\n";
-  summaryMarkdown +=
-    "Full-page screenshots are attached as artifacts to this run.\n\n";
+  const summaries = {};
 
   for (const config of configs) {
-    summaryMarkdown += `### ${config.name.charAt(0).toUpperCase() + config.name.slice(1)}\n\n`;
+    let summaryMarkdown = `## PR Screenshots (${config.name.charAt(0).toUpperCase() + config.name.slice(1)})\n\n`;
+    summaryMarkdown +=
+      "Full-page screenshots are attached as artifacts to this run.\n\n";
     summaryMarkdown += "| Page | Preview |\n| --- | --- |\n";
 
     const context = await browser.newContext(config);
@@ -110,7 +110,7 @@ const server = app.listen(9021, async () => {
         await page.screenshot({
           path: thumbPath,
           type: "jpeg",
-          quality: 20,
+          quality: 10,
           fullPage: false,
         });
 
@@ -122,14 +122,21 @@ const server = app.listen(9021, async () => {
       }
     }
     await context.close();
-    summaryMarkdown += "\n";
+    summaries[config.name] = summaryMarkdown;
   }
 
   await browser.close();
   server.close();
 
-  fs.writeFileSync(path.join(screenshotsDir, "summary.md"), summaryMarkdown);
+  for (const [name, markdown] of Object.entries(summaries)) {
+    fs.writeFileSync(path.join(screenshotsDir, `summary-${name}.md`), markdown);
+  }
+
+  // Keep summary.md for GITHUB_STEP_SUMMARY, concatenating all summaries
+  const fullSummary = Object.values(summaries).join("\n\n");
+  fs.writeFileSync(path.join(screenshotsDir, "summary.md"), fullSummary);
+
   console.log(
-    `Screenshots captured successfully. Summary size: ${Math.round(summaryMarkdown.length / 1024)} KB`,
+    `Screenshots captured successfully. Total summary size: ${Math.round(fullSummary.length / 1024)} KB`,
   );
 });

@@ -62,6 +62,9 @@ jobs:
     needs: test
     name: PR Screenshots
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -104,6 +107,16 @@ jobs:
           path: screenshots/
       - name: Add Screenshots to Summary
         run: cat screenshots/summary.md >> $GITHUB_STEP_SUMMARY
+      - name: PR Comment Screenshots (Desktop)
+        uses: mshick/add-pr-comment@v3
+        with:
+          message-path: screenshots/summary-desktop.md
+          message-id: pr-screenshots-desktop
+      - name: PR Comment Screenshots (Mobile)
+        uses: mshick/add-pr-comment@v3
+        with:
+          message-path: screenshots/summary-mobile.md
+          message-id: pr-screenshots-mobile
 
   build:
     needs: test
