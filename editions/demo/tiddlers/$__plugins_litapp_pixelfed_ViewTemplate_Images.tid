@@ -1,0 +1,15 @@
+list-before: $:/core/ui/ViewTemplate/body
+tags: $:/tags/ViewTemplate
+title: $:/plugins/litapp/pixelfed/ViewTemplate/Images
+type: text/vnd.tiddlywiki
+
+<$list filter="[<currentTiddler>has:field[additional-images]]">
+  <$set name="postTitle" value={{!!title}}>
+    <div class="tc-pixelfed-image-set">
+      <img src={{!!image}} alt=<<postTitle>> style="display:block;max-width:100%;height:auto;margin:1rem 0;" />
+      <$list filter="[<currentTiddler>get[additional-images]split[ ]!is[blank]]" variable="photoURL">
+        <img src=<<photoURL>> alt=<<postTitle>> style="display:block;max-width:100%;height:auto;margin:1rem 0;" />
+      </$list>
+    </div>
+  </$set>
+</$list>

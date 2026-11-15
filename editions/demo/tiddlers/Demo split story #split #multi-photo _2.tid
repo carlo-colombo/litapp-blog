@@ -1,0 +1,10 @@
+description: Second photo from a split Pixelfed post.
+image: https://litapp-blog-images.s3.nl-ams.scw.cloud/images/27e9da1ada21dc42aadbbd5bb3e04e8a1ce9232015c5bf74a386da480bd42828
+pixelfed: https://pixelfed.social/p/demo/101
+published: 20260510090000000
+tags: pf:multi-photo
+thumbnail: https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/27e9da1ada21dc42aadbbd5bb3e04e8a1ce9232015c5bf74a386da480bd42828
+title: Demo split story #split #multi-photo /2
+type: text/vnd.tiddlywiki
+
+Second photo from a post imported with #split.

@@ -331,7 +331,28 @@ a:hover {
   border-color: var(--accent-color);
 }
 
+.gallery-item-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.gallery-item-thumbnails a {
+  min-width: 0;
+}
+
+.gallery-item-thumbnails img {
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: cover;
+}
+
 /* Entry Content */
+.entry-images img {
+  display: block;
+}
+
 article.entry {
   max-width: 700px;
   margin: 0 auto;

@@ -16,8 +16,15 @@ type: text/vnd.tiddlywiki
 
   <div class="entry-content">
     <$list filter="[is[current]has:field[pixelfed]]">
-        <img src={{!!image}} class="full-image" />
-        <h1 class="entry-description">{{!!description}}</h1>
+      <$set name="entryTitle" value={{!!title}}>
+        <div class="entry-images">
+          <img src={{!!image}} class="full-image" alt=<<entryTitle>> />
+          <$list filter="[<currentTiddler>get[additional-images]split[ ]!is[blank]]" variable="additionalImage">
+            <img src=<<additionalImage>> class="full-image" alt=<<entryTitle>> />
+          </$list>
+        </div>
+      </$set>
+      <h1 class="entry-description">{{!!description}}</h1>
     </$list>
     <$list filter="[is[current]!has:field[pixelfed]]">
         <$transclude mode="block"/>

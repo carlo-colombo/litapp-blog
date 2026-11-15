@@ -67,7 +67,7 @@ type: text/vnd.tiddlywiki
     `<$set name="pageTiddler" value={{{ [<currentTiddler>] }}}>`
     `<$list filter="[has:field[pixelfed]has:field[published]sample[1]]">`
       <div class="mobile-gallery-slice">
-        `<$set name="imgurl" filter="[all[current]get[image]] :else[all[current]get[thumbnail]]">`
+        `<$set name="imgurl" filter="[all[current]get[thumbnail]] :else[all[current]get[image]]">`
           `<$set name="sliceHref" filter="[<pageTiddler>match[$:/plugins/litapp/blog/templates/home]then[#gallery]] :else[<currentTiddler>encodeuricomponent[]addprefix[/]addsuffix[.html]]">`
             <a href="`<<sliceHref>>`">
               <img src="`<<imgurl>>`" alt="`{{!!title}}`" loading="lazy" />

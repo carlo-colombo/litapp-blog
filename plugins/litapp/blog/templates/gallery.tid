@@ -5,13 +5,20 @@ type: text/vnd.tiddlywiki
 <h1 class="page-title">Gallery</h1>
 
 <div class="gallery-grid" id="gallery">
-  <$list filter="[has:field[pixelfed]has:field[published]!sort[published]]">
+  <$list filter="[has:field[pixelfed]has:field[published]!sort[published]]" variable="postTiddler">
     <div class="gallery-item">
-      <$link>
-        <$set name=imgurl filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]">
-          <img src=<<imgurl>> alt={{!!title}} loading="lazy" />
+      <$link to=<<postTiddler>>>
+        <$set name=imgurl filter="[<postTiddler>get[thumbnail]] :else[<postTiddler>get[image]]">
+          <img src=<<imgurl>> alt=<<postTiddler>> loading="lazy" />
         </$set>
       </$link>
+      <div class="gallery-item-thumbnails">
+        <$list filter="[<postTiddler>get[additional-thumbnails]split[ ]!is[blank]]" variable="galleryThumbnail">
+          <$link to=<<postTiddler>>>
+            <img src=<<galleryThumbnail>> alt=<<postTiddler>> loading="lazy" />
+          </$link>
+        </$list>
+      </div>
     </div>
   </$list>
 </div>
