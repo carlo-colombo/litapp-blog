@@ -4,6 +4,8 @@ pixelfed: https://pixelfed.social/p/lit.pictures/648654127743442505
 published: 20240104223955000
 tags: pf:genuary pf:genuary2024 pf:genuary5 pf:p5js pf:creativecoding pf:generative pf:generativeart
 thumbnail: https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/2b9bdbdc-cc36-4b7d-a0bf-84ed4bd2b5e3
+thumbnail-width: 360
+thumbnail-height: 360
 title: In the style of Vera Molnár (1924-2023). #genuary #genuary2024 #genuary5 #p5js #creativecoding #generative #generativeart  https://editor.p5js.org/ca
 type: text/vnd.tiddlywiki
 

@@ -8,6 +8,8 @@ pixelfed: https://pixelfed.social/p/lit.pictures/639582912855833173
 published: 20231210215409000
 tags: pf:generative pf:generativeart pf:creativecoding pf:p5js
 thumbnail: https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/c9f54741-5910-4708-a805-364a725620bd
+thumbnail-width: 360
+thumbnail-height: 360
 title: Wavy lines #generative #generativeart #creativecoding  #p5js https://editor.p5js.org/carlo-colombo/full/3i8DeGCHQ
 type: text/vnd.tiddlywiki
 

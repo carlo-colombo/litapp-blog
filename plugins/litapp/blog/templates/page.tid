@@ -70,7 +70,12 @@ type: text/vnd.tiddlywiki
         `<$set name="imgurl" filter="[all[current]get[thumbnail]] :else[all[current]get[image]]">`
           `<$set name="sliceHref" filter="[<pageTiddler>match[$:/plugins/litapp/blog/templates/home]then[#gallery]] :else[<currentTiddler>encodeuricomponent[]addprefix[/]addsuffix[.html]]">`
             <a href="`<<sliceHref>>`">
-              <img src="`<<imgurl>>`" alt="`{{!!title}}`" loading="lazy" />
+              `<$list filter="[all[current]has[thumbnail-width]has[thumbnail-height]]">`
+                <img src="`<<imgurl>>`" alt="`{{!!title}}`" width="`{{!!thumbnail-width}}`" height="`{{!!thumbnail-height}}`" loading="lazy" />
+              `</$list>`
+              `<$list filter="[all[current]!has[thumbnail-width]] [all[current]!has[thumbnail-height]]">`
+                <img src="`<<imgurl>>`" alt="`{{!!title}}`" loading="lazy" />
+              `</$list>`
             </a>
           `</$set>`
         `</$set>`

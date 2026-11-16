@@ -6,6 +6,8 @@ pixelfed: https://pixelfed.social/p/lit.pictures/579600635419708602
 published: 20230628092559000
 tags: pf:blackandwhite pf:wood pf:tiles
 thumbnail: https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/ee002c22-eec0-4bab-827b-aa0f5fe71658.jpg
+thumbnail-width: 360
+thumbnail-height: 360
 title: Wood patterns #blackandwhite #wood #tiles
 type: text/vnd.tiddlywiki
 

@@ -6,6 +6,8 @@ pixelfed: https://pixelfed.social/p/lit.pictures/628366711072354026
 published: 20231109230458000
 tags: pf:venice pf:italy pf:photography pf:details pf:books
 thumbnail: https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/8a6defaf-1b97-4685-b4e5-78550abf4b3c.jpg
+thumbnail-width: 360
+thumbnail-height: 360
 title: Libreria Alta Acqua - Venezia #venice #italy #photography #details #books
 type: text/vnd.tiddlywiki
 

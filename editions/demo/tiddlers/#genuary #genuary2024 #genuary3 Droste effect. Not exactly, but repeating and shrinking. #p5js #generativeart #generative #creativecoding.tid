@@ -4,6 +4,8 @@ pixelfed: https://pixelfed.social/p/lit.pictures/648220742146053211
 published: 20240103175748000
 tags: pf:genuary pf:genuary2024 pf:genuary3 pf:p5js pf:generativeart pf:generative pf:creativecoding
 thumbnail: https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/2841752b-6dd8-494c-840d-050fe859497b
+thumbnail-width: 360
+thumbnail-height: 360
 title: #genuary #genuary2024 #genuary3 Droste effect. Not exactly, but repeating and shrinking. #p5js #generativeart #generative #creativecoding
 type: text/vnd.tiddlywiki
 

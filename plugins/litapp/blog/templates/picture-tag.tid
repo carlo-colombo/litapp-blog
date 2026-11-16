@@ -8,13 +8,27 @@ type: text/vnd.tiddlywiki
     <div class="gallery-item">
       <$link to=<<postTiddler>>>
         <$set name=imgurl filter="[<postTiddler>get[thumbnail]] :else[<postTiddler>get[image]]">
-          <img src=<<imgurl>> alt=<<postTiddler>> loading="lazy" />
+          <$list filter="[<postTiddler>has[thumbnail-width]has[thumbnail-height]]">
+            <img src=<<imgurl>> alt=<<postTiddler>> width={{!!thumbnail-width}} height={{!!thumbnail-height}} loading="lazy" decoding="async" />
+          </$list>
+          <$list filter="[<postTiddler>!has[thumbnail-width]] [<postTiddler>!has[thumbnail-height]]">
+            <img src=<<imgurl>> alt=<<postTiddler>> loading="lazy" decoding="async" />
+          </$list>
         </$set>
       </$link>
       <div class="gallery-item-thumbnails">
-        <$list filter="[<postTiddler>get[additional-thumbnails]split[ ]!is[blank]]" variable="galleryThumbnail">
+        <$list filter="[<postTiddler>get[additional-thumbnails]split[ ]!is[blank]]" variable="galleryThumbnail" counter="thumbnailIndex">
           <$link to=<<postTiddler>>>
-            <img src=<<galleryThumbnail>> alt=<<postTiddler>> loading="lazy" />
+            <$list filter="[<postTiddler>has[additional-thumbnail-widths]has[additional-thumbnail-heights]]">
+              <$set name="additionalThumbnailWidth" filter="[<postTiddler>get[additional-thumbnail-widths]split[ ]nth<thumbnailIndex>]">
+                <$set name="additionalThumbnailHeight" filter="[<postTiddler>get[additional-thumbnail-heights]split[ ]nth<thumbnailIndex>]">
+                  <img src=<<galleryThumbnail>> alt=<<postTiddler>> width=<<additionalThumbnailWidth>> height=<<additionalThumbnailHeight>> loading="lazy" decoding="async" />
+                </$set>
+              </$set>
+            </$list>
+            <$list filter="[<postTiddler>!has[additional-thumbnail-widths]] [<postTiddler>!has[additional-thumbnail-heights]]">
+              <img src=<<galleryThumbnail>> alt=<<postTiddler>> loading="lazy" decoding="async" />
+            </$list>
           </$link>
         </$list>
       </div>

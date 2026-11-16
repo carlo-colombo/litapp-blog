@@ -4,6 +4,8 @@ pixelfed: https://pixelfed.social/p/lit.pictures/653576648623574579
 published: 20240118124015000
 tags: pf:phography pf:monza pf:italy pf:northernitaly
 thumbnail: https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/9286c42d-9d2d-4507-a757-ca07dba02aae
+thumbnail-width: 360
+thumbnail-height: 360
 title: Parco di Monza, grey and colorful January #phography #monza #italy #northernitaly
 type: text/vnd.tiddlywiki
 

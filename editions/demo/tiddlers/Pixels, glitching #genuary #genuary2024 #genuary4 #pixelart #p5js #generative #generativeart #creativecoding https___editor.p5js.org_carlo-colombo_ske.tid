@@ -4,6 +4,8 @@ pixelfed: https://pixelfed.social/p/lit.pictures/648556236525397281
 published: 20240104161056000
 tags: pf:genuary pf:genuary2024 pf:genuary4 pf:pixelart pf:p5js pf:generative pf:generativeart pf:creativecoding
 thumbnail: https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/845b2d7b-0ff3-4097-a1c8-d69bf9fdfcbd
+thumbnail-width: 360
+thumbnail-height: 360
 title: Pixels, glitching #genuary #genuary2024 #genuary4 #pixelart #p5js #generative #generativeart #creativecoding https://editor.p5js.org/carlo-colombo/ske
 type: text/vnd.tiddlywiki
 

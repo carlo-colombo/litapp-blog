@@ -4,6 +4,8 @@ pixelfed: https://pixelfed.social/p/lit.pictures/639241441924424138
 published: 20231209231716000
 tags: pf:generative pf:generativeart pf:colors pf:coding pf:creativecoding pf:p5js
 thumbnail: https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/1d5da042-1758-4a91-a3ef-1a4fb1545b00
+thumbnail-width: 360
+thumbnail-height: 360
 title: Paths, 4 variations #generative #generativeart #colors #coding #creativecoding #p5js https://editor.p5js.org/carlo-colombo/full/y7WUh8nW_
 type: text/vnd.tiddlywiki
 

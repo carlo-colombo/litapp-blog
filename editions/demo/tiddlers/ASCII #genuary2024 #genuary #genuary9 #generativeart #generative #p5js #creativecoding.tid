@@ -4,6 +4,8 @@ pixelfed: https://pixelfed.social/p/lit.pictures/650438141213569254
 published: 20240109204857000
 tags: pf:genuary2024 pf:genuary pf:genuary9 pf:generativeart pf:generative pf:p5js pf:creativecoding
 thumbnail: https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/38e8bff7-02eb-4e9b-ba95-0598210a545c
+thumbnail-width: 360
+thumbnail-height: 360
 title: ASCII #genuary2024 #genuary #genuary9 #generativeart #generative #p5js #creativecoding
 type: text/vnd.tiddlywiki
 

@@ -155,6 +155,16 @@ test("HTML generation snapshots", async (t) => {
       );
     }
 
+    const galleryWithSizedMobileSlice = fs.readFileSync(
+      path.join(staticDir, "gallery.html"),
+      "utf-8",
+    );
+    assert.match(
+      galleryWithSizedMobileSlice,
+      /<div class="mobile-gallery-slice">[\s\S]*?<img[^>]*width="\d+"[^>]*height="\d+"/,
+      "mobile gallery slice should carry its image dimensions",
+    );
+
     const expectedGalleryHref =
       "/Demo%20multi-photo%20story%20%23multi-photo%20%23photography.html";
     for (const galleryPath of [
@@ -182,6 +192,18 @@ test("HTML generation snapshots", async (t) => {
             "https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/27e9da1ada21dc42aadbbd5bb3e04e8a1ce9232015c5bf74a386da480bd42828",
           ),
         `${galleryPath} should render both secondary photo thumbnails`,
+      );
+    }
+
+    const multiPhotoTag = fs.readFileSync(
+      path.join(staticDir, "picture-tag/multi-photo.html"),
+      "utf-8",
+    );
+    for (const height of [269, 120, 270]) {
+      assert.match(
+        multiPhotoTag,
+        new RegExp(`<img[^>]*height="${height}"[^>]*width="360"`),
+        `multi-photo thumbnail height ${height} should be emitted with its width`,
       );
     }
   });

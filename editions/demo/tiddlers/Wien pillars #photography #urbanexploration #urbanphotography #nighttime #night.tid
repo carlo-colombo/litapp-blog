@@ -4,6 +4,8 @@ pixelfed: https://pixelfed.social/p/lit.pictures/641771924989870906
 published: 20231216225230000
 tags: pf:photography pf:urbanexploration pf:urbanphotography pf:nighttime pf:night
 thumbnail: https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/2daf50bf-a975-485c-a972-c404c18cff0f
+thumbnail-width: 360
+thumbnail-height: 360
 title: Wien pillars #photography #urbanexploration #urbanphotography #nighttime #night
 type: text/vnd.tiddlywiki
 

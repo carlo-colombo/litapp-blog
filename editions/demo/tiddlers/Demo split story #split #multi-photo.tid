@@ -4,6 +4,8 @@ pixelfed: https://pixelfed.social/p/demo/101
 published: 20260510090000000
 tags: pf:multi-photo
 thumbnail: https://litapp-blog-images.s3.nl-ams.scw.cloud/thumbs/69958e11-6776-45b6-8873-b09a649a891e.jpg
+thumbnail-width: 360
+thumbnail-height: 120
 title: Demo split story #split #multi-photo
 type: text/vnd.tiddlywiki
 
