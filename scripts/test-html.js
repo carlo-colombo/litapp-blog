@@ -80,6 +80,108 @@ test("HTML generation snapshots", async (t) => {
     });
   }
 
+  await t.test("shared page shell and main headings are accessible", () => {
+    const pagePaths = [
+      "index.html",
+      "gallery.html",
+      "picture-tag/photography.html",
+      "collections.html",
+      "collections/generative.html",
+      "articles.html",
+      "Test Post 1.html",
+      "404.html",
+    ];
+
+    for (const pagePath of pagePaths) {
+      const html = fs.readFileSync(path.join(staticDir, pagePath), "utf-8");
+      assert.match(
+        html,
+        /<html lang="en">/,
+        `${pagePath} should declare its language`,
+      );
+      assert.match(
+        html,
+        /<a class="skip-link" href="#main-content">/,
+        `${pagePath} should provide a skip link`,
+      );
+      assert.match(
+        html,
+        /<main id="main-content">/,
+        `${pagePath} should identify its main landmark`,
+      );
+      assert.match(
+        html,
+        /<nav aria-label="Primary navigation">/,
+        `${pagePath} should label primary navigation`,
+      );
+      assert.match(
+        html,
+        /<nav class="footer-links" aria-label="Footer links">/,
+        `${pagePath} should label footer navigation`,
+      );
+      assert.equal(
+        (html.match(/<h1\b/g) || []).length,
+        1,
+        `${pagePath} should have exactly one h1`,
+      );
+    }
+
+    const gallery = fs.readFileSync(
+      path.join(staticDir, "gallery.html"),
+      "utf-8",
+    );
+    const namedPhotoLinks = [
+      ...gallery.matchAll(
+        /<a aria-label="([^"]+)"[^>]*>\s*<img[^>]*alt="([^"]*)"/g,
+      ),
+    ];
+    assert.ok(
+      namedPhotoLinks.length > 0,
+      "gallery photo links should have accessible names",
+    );
+    for (const [, linkName, imageAlt] of namedPhotoLinks) {
+      assert.ok(
+        linkName.length <= 80,
+        "gallery link names should stay concise",
+      );
+      assert.ok(
+        !linkName.includes("#"),
+        "gallery link names should omit hashtag lists",
+      );
+      assert.equal(
+        imageAlt,
+        linkName,
+        "gallery thumbnails should use concise descriptive alt text",
+      );
+    }
+
+    const home = fs.readFileSync(path.join(staticDir, "index.html"), "utf-8");
+    const mobileSlice = home.match(
+      /<div class="mobile-gallery-slice">([\s\S]*?)<\/div>/,
+    )?.[1];
+    assert.match(
+      mobileSlice || "",
+      /<img[^>]*alt="[^"#]{1,80}"/,
+      "mobile photo thumbnails should have concise alt text",
+    );
+
+    const photoPath = pages.find((page) => page.name === "photo").path;
+    const photoPage = fs.readFileSync(path.join(staticDir, photoPath), "utf-8");
+    const fullImages =
+      photoPage.match(/<img\b[^>]*class="full-image"[^>]*>/g) || [];
+    assert.ok(
+      fullImages.length > 0,
+      "photo posts should render their full-size image",
+    );
+    for (const image of fullImages) {
+      const alt = image.match(/\balt="([^"]*)"/)?.[1];
+      assert.ok(
+        alt && alt.length <= 80 && !alt.includes("#"),
+        "full-size photos should have concise alt text without hashtags",
+      );
+    }
+  });
+
   await t.test("multi-photo and split-photo rendering", () => {
     const detailPath = path.join(
       staticDir,

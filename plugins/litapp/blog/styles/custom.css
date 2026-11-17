@@ -36,6 +36,21 @@ header {
   padding: 1rem;
 }
 
+.skip-link {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  background: var(--text-color);
+  color: var(--bg-color);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
 header nav {
   display: flex;
   justify-content: space-between;
@@ -133,6 +148,7 @@ footer div {
 
 .footer-links ul li a {
   color: var(--secondary-color);
+  text-decoration: none;
   font-family: var(--font-mono);
   font-size: 0.85rem;
 }
@@ -143,7 +159,7 @@ footer div {
 
 .build-info {
   margin-top: 1rem;
-  opacity: 0.7;
+  color: var(--secondary-color);
   font-size: 0.75rem;
 }
 
@@ -157,13 +173,19 @@ h4 {
 
 a {
   color: var(--accent-color);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a:hover {
   text-decoration: none;
   color: #fff;
   border-bottom: 1px solid var(--accent-color);
+}
+
+:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--bg-color);
 }
 
 /* Scrollbar */

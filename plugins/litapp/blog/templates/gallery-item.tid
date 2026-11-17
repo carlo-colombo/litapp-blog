@@ -5,28 +5,28 @@ type: text/vnd.tiddlywiki
 \define gallery-item()
 <$set name="galleryPost" value=<<currentTiddler>>>
 <div class="gallery-item">
-  <$link to=<<galleryPost>>>
+  <$link to=<<galleryPost>> aria-label={{{ [<galleryPost>get[title]splitregexp[#\S*]splitregexp[\s+]!is[blank]limit[5]join[ ]] :else[enlist:raw[photo post]] }}}>
     <$set name="imgurl" filter="[<galleryPost>get[thumbnail]] :else[<galleryPost>get[image]]">
       <$list filter="[<galleryPost>has[thumbnail-width]has[thumbnail-height]]">
-        <img src=<<imgurl>> alt=<<galleryPost>> width={{{ [<galleryPost>get[thumbnail-width]] }}} height={{{ [<galleryPost>get[thumbnail-height]] }}} loading="lazy" decoding="async" />
+        <img src=<<imgurl>> alt={{{ [<galleryPost>get[title]splitregexp[#\S*]splitregexp[\s+]!is[blank]limit[5]join[ ]] :else[enlist:raw[photo post]] }}} width={{{ [<galleryPost>get[thumbnail-width]] }}} height={{{ [<galleryPost>get[thumbnail-height]] }}} loading="lazy" decoding="async" />
       </$list>
       <$list filter="[<galleryPost>!has[thumbnail-width]] [<galleryPost>!has[thumbnail-height]]">
-        <img src=<<imgurl>> alt=<<galleryPost>> loading="lazy" decoding="async" />
+        <img src=<<imgurl>> alt={{{ [<galleryPost>get[title]splitregexp[#\S*]splitregexp[\s+]!is[blank]limit[5]join[ ]] :else[enlist:raw[photo post]] }}} loading="lazy" decoding="async" />
       </$list>
     </$set>
   </$link>
   <div class="gallery-item-thumbnails">
     <$list filter="[<galleryPost>get[additional-thumbnails]split[ ]!is[blank]]" variable="galleryThumbnail" counter="thumbnailIndex">
-      <$link to=<<galleryPost>>>
+      <$link to=<<galleryPost>> aria-label={{{ [<galleryPost>get[title]splitregexp[#\S*]splitregexp[\s+]!is[blank]limit[5]join[ ]] :else[enlist:raw[photo post]] }}}>
         <$list filter="[<galleryPost>has[additional-thumbnail-widths]has[additional-thumbnail-heights]]">
           <$set name="additionalThumbnailWidth" filter="[<galleryPost>get[additional-thumbnail-widths]split[ ]nth<thumbnailIndex>]">
             <$set name="additionalThumbnailHeight" filter="[<galleryPost>get[additional-thumbnail-heights]split[ ]nth<thumbnailIndex>]">
-              <img src=<<galleryThumbnail>> alt=<<galleryPost>> width=<<additionalThumbnailWidth>> height=<<additionalThumbnailHeight>> loading="lazy" decoding="async" />
+              <img src=<<galleryThumbnail>> alt={{{ [<galleryPost>get[title]splitregexp[#\S*]splitregexp[\s+]!is[blank]limit[5]join[ ]] :else[enlist:raw[photo post]] }}} width=<<additionalThumbnailWidth>> height=<<additionalThumbnailHeight>> loading="lazy" decoding="async" />
             </$set>
           </$set>
         </$list>
         <$list filter="[<galleryPost>!has[additional-thumbnail-widths]] [<galleryPost>!has[additional-thumbnail-heights]]">
-          <img src=<<galleryThumbnail>> alt=<<galleryPost>> loading="lazy" decoding="async" />
+          <img src=<<galleryThumbnail>> alt={{{ [<galleryPost>get[title]splitregexp[#\S*]splitregexp[\s+]!is[blank]limit[5]join[ ]] :else[enlist:raw[photo post]] }}} loading="lazy" decoding="async" />
         </$list>
       </$link>
     </$list>

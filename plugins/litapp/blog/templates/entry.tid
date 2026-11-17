@@ -18,9 +18,9 @@ type: text/vnd.tiddlywiki
     <$list filter="[is[current]has:field[pixelfed]]">
       <$set name="entryTitle" value={{!!title}}>
         <div class="entry-images">
-          <img src={{!!image}} class="full-image" alt=<<entryTitle>> />
+          <img src={{!!image}} class="full-image" alt={{{ [<entryTitle>splitregexp[#\S*]splitregexp[\s+]!is[blank]limit[8]join[ ]] :else[enlist:raw[Photo]] }}} />
           <$list filter="[<currentTiddler>get[additional-images]split[ ]!is[blank]]" variable="additionalImage">
-            <img src=<<additionalImage>> class="full-image" alt=<<entryTitle>> />
+            <img src=<<additionalImage>> class="full-image" alt={{{ [<entryTitle>splitregexp[#\S*]splitregexp[\s+]!is[blank]limit[8]join[ ]] :else[enlist:raw[Photo]] }}} />
           </$list>
         </div>
       </$set>

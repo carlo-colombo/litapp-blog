@@ -12,7 +12,7 @@ type: text/vnd.tiddlywiki
 \define tv-config-toolbar-class() tc-btn-invisible
 \import [[$:/core/ui/PageMacros]] [all[shadows+tiddlers]tag[$:/tags/Macro]!has[draft.of]]
 `<!doctype html>
-<html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta name="generator" content="TiddlyWiki" />
@@ -48,8 +48,9 @@ type: text/vnd.tiddlywiki
     `</$list>`
 </head>
 <body data-content-template=`<<contentTemplate>>` >
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header>
-       <nav>
+       <nav aria-label="Primary navigation">
          <div class="site-branding">
            <a href="/" class="site-title">`{{$:/config/blog/title}}`</a>
            <p class="site-subtitle">`<$view tiddler="$:/config/blog/subtitle" format="htmlwikified"/>`</p>
@@ -71,10 +72,10 @@ type: text/vnd.tiddlywiki
           `<$set name="sliceHref" filter="[<pageTiddler>match[$:/plugins/litapp/blog/templates/home]then[#gallery]] :else[<currentTiddler>encodeuricomponent[]addprefix[/]addsuffix[.html]]">`
             <a href="`<<sliceHref>>`">
               `<$list filter="[all[current]has[thumbnail-width]has[thumbnail-height]]">`
-                <img src="`<<imgurl>>`" alt="`{{!!title}}`" width="`{{!!thumbnail-width}}`" height="`{{!!thumbnail-height}}`" loading="lazy" />
+                <img src="`<<imgurl>>`" alt="`{{{ [<currentTiddler>get[title]splitregexp[#\S*]splitregexp[\s+]!is[blank]limit[5]join[ ]] :else[enlist:raw[photo post]] }}}`" width="`{{!!thumbnail-width}}`" height="`{{!!thumbnail-height}}`" loading="lazy" />
               `</$list>`
               `<$list filter="[all[current]!has[thumbnail-width]] [all[current]!has[thumbnail-height]]">`
-                <img src="`<<imgurl>>`" alt="`{{!!title}}`" loading="lazy" />
+                <img src="`<<imgurl>>`" alt="`{{{ [<currentTiddler>get[title]splitregexp[#\S*]splitregexp[\s+]!is[blank]limit[5]join[ ]] :else[enlist:raw[photo post]] }}}`" loading="lazy" />
               `</$list>`
             </a>
           `</$set>`
@@ -82,12 +83,11 @@ type: text/vnd.tiddlywiki
       </div>
     `</$list>`
     `</$set>`
-    <main>
+    <main id="main-content">
          `<$view tiddler=<<contentTemplate>> format="htmlwikified"/>`
     </main>
     <footer>
-      <div class="footer-links">
-        <h4 class="sr-only">Links</h4>
+      <nav class="footer-links" aria-label="Footer links">
         <ul>
 `<$list filter="[[$:/config/blog/links]indexes[]]" variable="link-title">`
             <li>
@@ -102,7 +102,7 @@ type: text/vnd.tiddlywiki
             </li>
 `</$list>`
         </ul>
-      </div>
+      </nav>
       <div>
         © `<<now "YYYY">> <$view tiddler="$:/config/blog/author" />`
       </div>

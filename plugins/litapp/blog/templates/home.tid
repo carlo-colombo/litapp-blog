@@ -2,6 +2,8 @@ caption: Home
 title: $:/plugins/litapp/blog/templates/home
 type: text/vnd.tiddlywiki
 
+<h1 class="entry-title">Latest posts and photos</h1>
+
 <section class="home-sections">
   <div class="articles-column">
     <h2 class="section-title">Latest Articles</h2>
