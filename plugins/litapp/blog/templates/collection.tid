@@ -11,14 +11,6 @@ type: text/vnd.tiddlywiki
   </div>
 
   <div class="gallery-grid collection-gallery" id="gallery">
-    <$list filter="[tag<currentTiddler>has:field[pixelfed]has:field[published]!sort[published]]">
-      <div class="gallery-item">
-        <$link>
-          <$set name="imgurl" filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]">
-            <img src=<<imgurl>> alt={{!!title}} loading="lazy" />
-          </$set>
-        </$link>
-      </div>
-    </$list>
+    <$list filter="[tag<currentTiddler>has:field[pixelfed]has:field[published]!sort[published]]"><<gallery-item>></$list>
   </div>
 </article>

@@ -13,20 +13,17 @@ type: text/vnd.tiddlywiki
         <$set name="collectionName" filter="[<item>get[title]removeprefix[pf:]]">
           <$set name="collectionHref" filter="[<collectionName>encodeuricomponent[]addprefix[/collections/]addsuffix[.html]]">
             <h2><a href=<<collectionHref>>><$text text=<<collectionName>> /></a></h2>
+            <div class="collection-summary-content"><$transclude tiddler=<<item>> mode="block" /></div>
+            <div class="gallery-grid collection-preview-grid">
+              <$list filter="[tag<item>has:field[pixelfed]has:field[published]!sort[published]limit[8]]"><<gallery-item>></$list>
+              <$list filter="[tag<item>has:field[pixelfed]has:field[published]!sort[published]limit[1],[8]]" variable="ignore">
+                <div class="gallery-item collection-more">
+                  <a href=<<collectionHref>> aria-label="View all photos in this collection">…</a>
+                </div>
+              </$list>
+            </div>
           </$set>
         </$set>
-        <div class="collection-summary-content"><$transclude tiddler=<<item>> mode="block" /></div>
-        <div class="collection-thumbnail-grid">
-          <$list filter="[tag<item>has:field[pixelfed]has:field[published]!sort[published]]">
-            <div class="collection-thumbnail">
-              <$link>
-                <$set name="thumbnailUrl" filter="[all[current]get:field[thumbnail]] :else[all[current]get:field[image]]">
-                  <img src=<<thumbnailUrl>> alt={{!!title}} loading="lazy" />
-                </$set>
-              </$link>
-            </div>
-          </$list>
-        </div>
       </section>
     </$list>
   </div>

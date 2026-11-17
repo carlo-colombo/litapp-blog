@@ -207,4 +207,43 @@ test("HTML generation snapshots", async (t) => {
       );
     }
   });
+
+  await t.test("collection pages use the shared masonry image template", () => {
+    const collectionsIndex = fs.readFileSync(
+      path.join(staticDir, "collections.html"),
+      "utf-8",
+    );
+    const preview = collectionsIndex.slice(
+      collectionsIndex.indexOf('class="gallery-grid collection-preview-grid"'),
+    );
+    assert.equal(
+      (preview.match(/class="gallery-item"/g) || []).length,
+      8,
+      "collection previews should show the first eight image items",
+    );
+    assert.match(
+      preview,
+      /class="gallery-item collection-more"[\s\S]*?…/,
+      "collection previews should link to more photos with an ellipsis",
+    );
+    assert.match(
+      preview,
+      /<a(?=[^>]*href="\/collections\/generative\.html")(?=[^>]*aria-label="View all photos in this collection")[^>]*>…<\/a>/,
+      "the ellipsis should link to the individual collection page",
+    );
+
+    const collection = fs.readFileSync(
+      path.join(staticDir, "collections/generative.html"),
+      "utf-8",
+    );
+    assert.match(
+      collection,
+      /class="gallery-grid collection-gallery"/,
+      "individual collections should use the masonry gallery grid",
+    );
+    assert.ok(
+      collection.includes("gallery-item-thumbnails"),
+      "individual collections should use the shared gallery item template",
+    );
+  });
 });
