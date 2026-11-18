@@ -16,7 +16,7 @@ type: text/vnd.tiddlywiki
     </$set>
   </$link>
   <div class="gallery-item-thumbnails">
-    <$list filter="[<galleryPost>get[additional-thumbnails]split[ ]!is[blank]]" variable="galleryThumbnail" counter="thumbnailIndex">
+    <$list filter="[<galleryPost>get[additional-thumbnails]split[ ]!is[blank]] :else[<galleryPost>get[additional-images]split[ ]!is[blank]]" variable="galleryThumbnail" counter="thumbnailIndex">
       <$link to=<<galleryPost>> aria-label={{{ [<galleryPost>get[title]splitregexp[#\S*]splitregexp[\s+]!is[blank]limit[5]join[ ]] :else[enlist:raw[photo post]] }}}>
         <$list filter="[<galleryPost>has[additional-thumbnail-widths]has[additional-thumbnail-heights]]">
           <$set name="additionalThumbnailWidth" filter="[<galleryPost>get[additional-thumbnail-widths]split[ ]nth<thumbnailIndex>]">
