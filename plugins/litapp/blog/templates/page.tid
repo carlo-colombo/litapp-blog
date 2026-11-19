@@ -40,6 +40,14 @@ type: text/vnd.tiddlywiki
     <link rel="stylesheet" href="/static.css">
     <link rel="alternate" type="application/rss+xml" title="`{{$:/config/feeds/title}}`" href="/rss.xml" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+`<$set name="redirectTag" value={{{ [<currentTiddler>] }}}>`
+`<$list filter="[<redirectTag>tag[collection]]">`
+`<$list filter="[<contentTemplate>match[$:/plugins/litapp/blog/templates/picture-tag]]">`
+    <meta http-equiv="refresh" content="0;url=/collections/`{{{ [<redirectTag>removeprefix[pf:]encodeuricomponent[]] }}}`.html" />
+    <link rel="canonical" href="/collections/`{{{ [<redirectTag>removeprefix[pf:]encodeuricomponent[]] }}}`.html" />
+`</$list>`
+`</$list>`
+`</$set>`
     <title>`{{$:/config/blog/title}} - <$set name="cleanTitle" filter="[<currentTiddler>removeprefix[pf:]] :else[<currentTiddler>]"><$view field="caption"><$text text=<<cleanTitle>>/></$view></$set>`</title>
     `<$list filter="[{$:/config/blog/environment}match[dev]]">`
         <script>

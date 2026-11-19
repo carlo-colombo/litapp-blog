@@ -347,5 +347,44 @@ test("HTML generation snapshots", async (t) => {
       collection.includes("gallery-item-thumbnails"),
       "individual collections should use the shared gallery item template",
     );
+
+    const collectionTaggedPicturePath = fs
+      .readdirSync(staticDir)
+      .find((fileName) => fileName.startsWith("City in the #background"));
+    assert.ok(
+      collectionTaggedPicturePath,
+      "should find a picture tagged with the generative collection",
+    );
+    const collectionTaggedPicture = fs.readFileSync(
+      path.join(staticDir, collectionTaggedPicturePath),
+      "utf-8",
+    );
+    assert.match(
+      collectionTaggedPicture,
+      /<a class="tag" href="\/collections\/generative\.html">#generative<\/a>/,
+      "collection tags should link to their collection pages",
+    );
+
+    const home = fs.readFileSync(path.join(staticDir, "index.html"), "utf-8");
+    assert.match(
+      home,
+      /<a class="tag" href="\/collections\/generative\.html">\s*#generative/,
+      "collection tags in the home page tag cloud should link to their collection pages",
+    );
+
+    const collectionTagPage = fs.readFileSync(
+      path.join(staticDir, "picture-tag/generative.html"),
+      "utf-8",
+    );
+    assert.match(
+      collectionTagPage,
+      /<meta http-equiv="refresh" content="0;url=\/collections\/generative\.html"\s*\/>/,
+      "generated collection tag pages should redirect to the collection page",
+    );
+    assert.match(
+      collectionTagPage,
+      /This tag is a collection\. Continue to <a href="\/collections\/generative\.html">generative<\/a>/,
+      "collection tag pages should provide a working link if automatic redirects are disabled",
+    );
   });
 });

@@ -1,8 +1,13 @@
 title: $:/plugins/litapp/blog/templates/picture-tag
 type: text/vnd.tiddlywiki
 
-<h1 class="page-title">Gallery Tag: <$text text={{{ [<currentTiddler>removeprefix[pf:]] }}} /></h1>
+<$list filter="[<currentTiddler>tag[collection]]">
+  <p>This tag is a collection. Continue to <a href={{{ [<currentTiddler>removeprefix[pf:]encodeuricomponent[]addprefix[/collections/]addsuffix[.html]] }}}><$text text={{{ [<currentTiddler>removeprefix[pf:]] }}} /></a>.</p>
+</$list>
+<$list filter="[<currentTiddler>!tag[collection]]">
+  <h1 class="page-title">Gallery Tag: <$text text={{{ [<currentTiddler>removeprefix[pf:]] }}} /></h1>
 
-<div class="gallery-grid" id="gallery">
-  <$list filter="[tag<currentTiddler>has:field[pixelfed]has:field[published]!sort[published]]"><<gallery-item>></$list>
-</div>
+  <div class="gallery-grid" id="gallery">
+    <$list filter="[tag<currentTiddler>has:field[pixelfed]has:field[published]!sort[published]]"><<gallery-item>></$list>
+  </div>
+</$list>

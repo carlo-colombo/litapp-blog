@@ -35,9 +35,16 @@ type: text/vnd.tiddlywiki
     <h2 class="section-title" style="margin-top: 2rem;">Photo Tags</h2>
     <div class="article-tags">
       <$list filter="[has:field[pixelfed]has:field[published]tags[]prefix[pf:]sort[title]]:sort:number:reverse[tagging[]has:field[pixelfed]has:field[published]count[]]">
-        <a href={{{ [<currentTiddler>removeprefix[pf:]addprefix[/picture-tag/]addsuffix[.html]] }}} class="tag">
-          #<$text text={{{ [<currentTiddler>removeprefix[pf:]] }}} /> [<$count filter="[has:field[published]has:field[pixelfed]tag<currentTiddler>]"/>]
-        </a>
+        <$list filter="[<currentTiddler>tag[collection]]">
+          <a href={{{ [<currentTiddler>removeprefix[pf:]encodeuricomponent[]addprefix[/collections/]addsuffix[.html]] }}} class="tag">
+            #<$text text={{{ [<currentTiddler>removeprefix[pf:]] }}} /> [<$count filter="[has:field[published]has:field[pixelfed]tag<currentTiddler>]"/>]
+          </a>
+        </$list>
+        <$list filter="[<currentTiddler>!tag[collection]]">
+          <a href={{{ [<currentTiddler>removeprefix[pf:]encodeuricomponent[]addprefix[/picture-tag/]addsuffix[.html]] }}} class="tag">
+            #<$text text={{{ [<currentTiddler>removeprefix[pf:]] }}} /> [<$count filter="[has:field[published]has:field[pixelfed]tag<currentTiddler>]"/>]
+          </a>
+        </$list>
       </$list>
     </div>
   </div>
